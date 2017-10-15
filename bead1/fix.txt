@@ -1,0 +1,4 @@
+A Just-ot olyan függvények produkálják, amelynek a visszatérési értéke 'Maybe a'. 
+A két lehetséges visszatérési érték a 'Nothing' és a 'Just a'. 
+Ha jól mûködik a reafCode függvényed, akkor annak egy [Int]-et kell visszaadnia, vagy Nothing-ot. 
+Mivel a readCode Nothing-ot is visszaadhat, ezért ennek a lekezelésére kell a maybe függvényt megírni.
