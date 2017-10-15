@@ -5,12 +5,37 @@ MainModule
 	DclOpen:	False
 	Icl
 		WindowPosition
-			X:	289
-			Y:	0
-			SizeX:	1563
-			SizeY:	712
-	IclOpen:	True
+			X:	291
+			Y:	8
+			SizeX:	1568
+			SizeY:	707
+	IclOpen:	False
 OtherModules
+	Module
+		Name:	StdArrayExtensions
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdLib
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdLibMisc
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdListExtensions
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdMaybe
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
 	Module
 		Name:	StdArray
 		Dir:	{Application}\Libraries\StdEnv
