@@ -8,8 +8,11 @@ positionalMatches :: [Int] [Int] -> Int
 positionalMatches xs ys = length [(x,y) \\ (x,y) <- zip(xs, ys) | x == y]
 
 // 2
+
 matches :: [Int] [Int] -> Int
-matches a b = length b - length (removeMembers a b)
+matches a b 
+  | length b - length (removeMembers a b) < 0 = 0
+  | otherwise = length b - length (removeMembers a b)
 
 // 3
 toChars :: String -> [Char]
@@ -41,8 +44,9 @@ maybe f b Nothing = b
 maybe f b (Just a) = f a
 
 // 5
+
 allMatches :: [Int] String -> (Int, Int)
-allMatches a b = (matches a (maybe ((+) 10) 7 (readCode b)), positionalMatches a (maybe ((+) 10) 7 (readCode b)))
+allMatches a b = (matches a (maybe ((++) []) [] (readCode b)), positionalMatches a (maybe ((++) []) [] (readCode b)))
 
 
 positionalMatches_test =
@@ -67,10 +71,10 @@ maybe_test =
   , maybe ((+) 10) 7 (Just 5) == 15
   ]
 allMatches_test =
-  [ allMatches [4,2,7,1] "1234" == (2, 1)
+  [ allMatches [4,2,7,1] "1234" == (3, 1)
   , allMatches [9,3,0,5] "1234" == (1, 0)
   , allMatches [9,3,0,5] "123a" == (0, 0)
   ]
 
 
-Start = allMatches [1,2,3,4] "1234"
+Start = allMatches_test
