@@ -1,13 +1,13 @@
 Version: 1.4
 MainModule
-	Name:	Mastermind
+	Name:	Turing
 	Dir:	{Project}
 	DclOpen:	False
 	Icl
 		WindowPosition
 			X:	291
 			Y:	8
-			SizeX:	1568
+			SizeX:	1014
 			SizeY:	707
 	IclOpen:	True
 OtherModules
@@ -82,6 +82,11 @@ OtherModules
 		DclOpen:	False
 		IclOpen:	False
 	Module
+		Name:	StdGeneric
+		Dir:	{Application}\Libraries\StdEnv
+		DclOpen:	False
+		IclOpen:	False
+	Module
 		Name:	StdInt
 		Dir:	{Application}\Libraries\StdEnv
 		DclOpen:	False
@@ -129,5 +134,10 @@ OtherModules
 	Module
 		Name:	_SystemEnum
 		Dir:	{Application}\Libraries\StdEnv
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	GenEq
+		Dir:	{Application}\Libraries\Generics
 		DclOpen:	False
 		IclOpen:	False

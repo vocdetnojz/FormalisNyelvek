@@ -46,7 +46,7 @@ maybe f b (Just a) = f a
 // 5
 
 allMatches :: [Int] String -> (Int, Int)
-allMatches a b = (matches a (maybe ((++) []) [] (readCode b)), positionalMatches a (maybe ((++) []) [] (readCode b)))
+allMatches a b = ((matches a (maybe ((++) []) [] (readCode b))) - (positionalMatches a (maybe ((++) []) [] (readCode b))), positionalMatches a (maybe ((++) []) [] (readCode b)))
 
 
 positionalMatches_test =
@@ -71,7 +71,7 @@ maybe_test =
   , maybe ((+) 10) 7 (Just 5) == 15
   ]
 allMatches_test =
-  [ allMatches [4,2,7,1] "1234" == (3, 1)
+  [ allMatches [4,2,7,1] "1234" == (2, 1)
   , allMatches [9,3,0,5] "1234" == (1, 0)
   , allMatches [9,3,0,5] "123a" == (0, 0)
   ]
