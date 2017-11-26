@@ -2,12 +2,15 @@ module Turing
 
 import StdEnv, StdLib, StdGeneric, GenEq
 
-:: Zipper a = Something
-:: Z a = {
-	left :: [a], 
-	right :: [a]
+:: Zipper a = {
+	left :: [a],
+	rigth :: [a]
 	}
 
+Z :: [a] [a] -> Zipper a
+Z ls rs = { left = ls, rigth = rs }
+
+//TODO
 derive gEq Zipper
 
 fromList :: [a] -> Zipper a
@@ -50,6 +53,17 @@ run a = abort "not defined"
 showStates :: (t Char) -> [String] | Machine t
 showStates a = abort "not defined"
 
+// TESTS
+
+test_fromList =
+  [ fromList empty   === Z [] []
+  , fromList [1]     === Z [] [1]
+  , fromList [1..10] === Z [] [1..10]
+  ]
+  where
+    empty :: [Int]
+    empty = []
+
 /*
 tests :: [[Bool]]
 tests =
@@ -68,4 +82,4 @@ tests =
 */
 
 //Start = (all and tests, zip2 [1..] (map and tests))
-Start = ""
+Start = test_fromList
