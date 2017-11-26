@@ -26,7 +26,7 @@
 .depend "StdOverloaded" "20171011182552"
 .depend "StdBool" "20171011182551"
 .depend "StdEnv" "20171011182552"
-.module m_Turing "Turing" "20171126170743"
+.module m_Turing "Turing" "20171126215343"
 .endinfo
 .implab _cycle_in_spine
 .implab _type_error
@@ -61,11 +61,11 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.desc0 d53 0 "Something"
-.desc0 d54 0 "Something1"
-.desc0 d55 0 "Something2"
-.desc0 d56 0 "Something3"
-.record r25 aaa 3 0 "Machine;"
+.desc0 d56 0 "Something"
+.desc0 d57 0 "Something1"
+.desc0 d58 0 "Something2"
+.desc0 d59 0 "Something3"
+.record r28 aaa 3 0 "Machine;"
 .export __Turing_Start
 .o 0 0
 __Turing_Start

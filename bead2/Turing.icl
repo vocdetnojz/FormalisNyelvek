@@ -3,6 +3,10 @@ module Turing
 import StdEnv, StdLib, StdGeneric, GenEq
 
 :: Zipper a = Something
+:: Z a = {
+	left :: [a], 
+	right :: [a]
+	}
 
 derive gEq Zipper
 
