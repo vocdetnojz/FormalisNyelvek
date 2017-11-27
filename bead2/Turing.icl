@@ -7,7 +7,7 @@ import StdEnv, StdLib, StdGeneric, GenEq
 // 1 	Kijelolt elem lekerdezese
 // 1 	Kijelolt elem modositasa
 // 1 	Zipper leptetese
-// 0 	Kijelolt elem kornyeke
+// 1 	Kijelolt elem kornyeke
 // 0 	Vegtelen Zipper letrehozasa listabol
 // 0 	Turing-gep tipusosztaly
 // 0 	Turing-gep adattipus
@@ -41,10 +41,10 @@ move Forward a = Z ([hd a.right] ++ a.left) (tl a.right)
 move Backward a = Z (tl a.left) ([hd a.left] ++ a.right)
 move Stay a = Z a.left a.right
 
-// eddig jo
-
 around :: Int (Zipper a) -> [a]
-around a b = abort "not defined"
+around a b = (reverse (take a b.left)) ++ [hd b.right] ++ (take a (tl b.right))
+
+// eddig jo
 
 fromListInf :: a [a] -> Zipper a
 fromListInf a b = abort "not defined"
@@ -115,7 +115,7 @@ tests =
   , test_read
   , test_write
   , test_move
-//  , test_around
+  , test_around
 //  , test_fromListInf
 //  , test_done
 //  , test_tape
@@ -126,3 +126,4 @@ tests =
 
 
 Start = (all and tests, zip2 [1..] (map and tests))
+//Start = around 3 (Z [1..] [0..])
