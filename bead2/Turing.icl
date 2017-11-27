@@ -15,11 +15,10 @@ derive gEq Zipper
 fromList :: [a] -> Zipper a
 fromList a = { left = [], right = a}
 
-//todo
-
 read :: (Zipper a) -> a
-read a = abort "not defined"
+read a = hd a.right
 
+// todo
 write :: a (Zipper a) -> Zipper a
 write a b = abort "not defined"
 
@@ -65,6 +64,12 @@ test_fromList =
   where
     empty :: [Int]
     empty = []
+    
+test_read =
+  [ read (Z [] [1])      == 1
+  , read (Z [] [2..])    == 2
+  , read (Z [1..] [3..]) == 3
+  ]
 
 /*
 tests :: [[Bool]]
@@ -84,4 +89,4 @@ tests =
 */
 
 //Start = (all and tests, zip2 [1..] (map and tests))
-Start = test_fromList
+Start = test_read
