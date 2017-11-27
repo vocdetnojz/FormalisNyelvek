@@ -4,17 +4,18 @@ import StdEnv, StdLib, StdGeneric, GenEq
 
 :: Zipper a = {
 	left :: [a],
-	rigth :: [a]
+	right :: [a]
 	}
 
 Z :: [a] [a] -> Zipper a
-Z ls rs = { left = ls, rigth = rs }
+Z ls rs = { left = ls, right = rs }
 
-//TODO
 derive gEq Zipper
 
 fromList :: [a] -> Zipper a
-fromList a = abort "not defined"
+fromList a = { left = [], right = a}
+
+//todo
 
 read :: (Zipper a) -> a
 read a = abort "not defined"
@@ -59,6 +60,7 @@ test_fromList =
   [ fromList empty   === Z [] []
   , fromList [1]     === Z [] [1]
   , fromList [1..10] === Z [] [1..10]
+  , fromList [1..10] =!= Z [0] [1..10]
   ]
   where
     empty :: [Int]

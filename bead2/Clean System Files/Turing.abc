@@ -1,32 +1,32 @@
 .comp 920 000111010
 .start __Turing_Start
-.depend "GenEq" "20171011182547"
-.depend "StdGeneric" "20171011182552"
-.depend "StdLibMisc" "20171011182553"
-.depend "StdArrayExtensions" "20171011182553"
-.depend "StdListExtensions" "20171011182553"
-.depend "StdMaybe" "20171011182553"
-.depend "StdLib" "20171011182553"
-.depend "_SystemEnum" "20171011182552"
-.depend "StdEnum" "20171011182551"
-.depend "StdMisc" "20171011182552"
-.depend "StdFunc" "20171011182552"
-.depend "StdCharList" "20171011182551"
-.depend "StdTuple" "20171011182552"
-.depend "StdOrdList" "20171011182552"
-.depend "StdList" "20171011182552"
-.depend "StdClass" "20171011182551"
-.depend "StdFile" "20171011182552"
-.depend "StdString" "20171011182552"
-.depend "_SystemArray" "20171011182552"
-.depend "StdArray" "20171011182551"
-.depend "StdChar" "20171011182551"
-.depend "StdReal" "20171011182552"
-.depend "StdInt" "20171011182552"
-.depend "StdOverloaded" "20171011182552"
-.depend "StdBool" "20171011182551"
-.depend "StdEnv" "20171011182552"
-.module m_Turing "Turing" "20171127000033"
+.depend "GenEq" "20111221122712"
+.depend "StdGeneric" "20111221122712"
+.depend "StdLibMisc" "20111221122712"
+.depend "StdArrayExtensions" "20111221122712"
+.depend "StdListExtensions" "20111221122712"
+.depend "StdMaybe" "20111221122712"
+.depend "StdLib" "20111221122712"
+.depend "_SystemEnum" "20111221122712"
+.depend "StdEnum" "20111221122712"
+.depend "StdMisc" "20111221122712"
+.depend "StdFunc" "20111221122712"
+.depend "StdCharList" "20111221122712"
+.depend "StdTuple" "20111221122712"
+.depend "StdOrdList" "20111221122712"
+.depend "StdList" "20111221122712"
+.depend "StdClass" "20111221122712"
+.depend "StdFile" "20111221122712"
+.depend "StdString" "20111221122712"
+.depend "_SystemArray" "20111221122712"
+.depend "StdArray" "20111221122712"
+.depend "StdChar" "20111221122712"
+.depend "StdReal" "20111221122712"
+.depend "StdInt" "20111221122712"
+.depend "StdOverloaded" "20111221122712"
+.depend "StdBool" "20111221122712"
+.depend "StdEnv" "20111221122712"
+.module m_Turing "Turing" "20171127122818"
 .endinfo
 .implab _cycle_in_spine
 .implab _type_error
@@ -62,6 +62,7 @@
 .implab n_S.6 ea_S.6
 .implab _driver
 .implab e_GenEq_s===
+.implab e_GenEq_s=!=
 .impdesc e_GenEq_dgEq_Int;2
 .impdesc e_GenEq_dgEq_PAIR;8
 .impdesc e_GenEq_dgEq_CONS;10
@@ -74,7 +75,6 @@
 .impdesc e_StdGeneric_kGenTypeVar
 .impdesc e__SystemEnum_d_from_to;6
 .implab e__SystemEnum_n_from_to;6 e__SystemEnum_ea_from_to;6
-.implab e_StdMisc_sabort
 .record r30 aa 2 0 "Zipper"
 .desc0 d64 0 "Something1"
 .desc0 d65 0 "Something2"
@@ -100,6 +100,20 @@ s11
 .o 1 0
 s10
 	buildh _Nil 0
+	buildI 10
+	buildI 1
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	buildh _Nil 0
+	buildI 0
+	buildh _Cons 2
+	build _ 2 n1
+	buildI 10
+	buildI 1
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	build _ 1 n2
+	buildh d27 0
+	build _ 3 n70
+	buildh _Cons 2
 	buildI 10
 	buildI 1
 	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
@@ -132,6 +146,33 @@ s10
 	buildh d27 0
 	build _ 3 n67
 	fillh _Cons 2 2
+.d 1 0
+	rtn
+.n 3 _ ea70
+.o 1 0
+n70
+	push_node _cycle_in_spine 3
+.o 4 0
+ea70
+.o 4 0
+s70
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_GenEq_s=!=
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
 .d 1 0
 	rtn
 .n 3 _ ea69
@@ -408,7 +449,7 @@ n20
 ea20
 	build _ 0 n18
 	buildI 1
-	buildAC "rigth"
+	buildAC "right"
 	buildh ARRAY 1
 	fill_r e_StdGeneric_rGenericFieldDescriptor 3 0 3 0 0
 	pop_a 3
@@ -449,26 +490,19 @@ s12
 .o 1 0
 n2
 	push_node _cycle_in_spine 1
-.d 1 0
-	jsr ea2
-.o 2 0
+.o 1 0
+ea2
+	buildh _Nil 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
 	fill_r r30 2 0 2 0 0
 	pop_a 2
 .d 1 0
-	rtn
-.o 1 0
-ea2
-	jsr_eval 0
-.o 1 0
-s2
-	buildAC "not defined"
-	updatepop_a 0 1
-.d 1 0
-	jsr print_string_
-.o 0 0
-	halt
-	repl_r_args 2 0
-.d 2 0
 	rtn
 .n 2 _
 .o 1 0
