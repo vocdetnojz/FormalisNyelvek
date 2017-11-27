@@ -26,7 +26,7 @@
 .depend "StdOverloaded" "20111221122712"
 .depend "StdBool" "20111221122712"
 .depend "StdEnv" "20111221122712"
-.module m_Turing "Turing" "20171127123911"
+.module m_Turing "Turing" "20171127124533"
 .endinfo
 .implab _cycle_in_spine
 .implab _type_error
@@ -61,151 +61,464 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impdesc e__SystemEnum_d_from;4
-.implab e__SystemEnum_n_from;4 e__SystemEnum_ea_from;4
-.implab e_StdList_shd
-.implab e_StdInt_s==;16
-.record r31 aa 2 0 "Zipper"
-.desc0 d65 0 "Something1"
-.desc0 d66 0 "Something2"
-.desc0 d67 0 "Something3"
-.record r37 aaa 3 0 "Machine;"
-.record r41 a 1 0 "gEq_s;"
+.implab e_GenEq_s===
+.impdesc e_GenEq_dgEq_Int;2
+.impdesc e_GenEq_dgEq_PAIR;8
+.impdesc e_GenEq_dgEq_CONS;10
+.impdesc e_GenEq_dgEq_FIELD;11
+.implab e_GenEq_sgEq_OBJECT;12
+.impdesc e_GenEq_dgEq__List;15
+.impdesc e_StdGeneric_rGenericConsDescriptor
+.impdesc e_StdGeneric_rGenericFieldDescriptor
+.impdesc e_StdGeneric_rGenericTypeDefDescriptor
+.impdesc e_StdGeneric_kGenTypeVar
+.impdesc e__SystemEnum_d_from_to;6
+.implab e__SystemEnum_n_from_to;6 e__SystemEnum_ea_from_to;6
+.impdesc e_StdList_dupdateAt
+.implab e_StdList_nupdateAt e_StdList_eaupdateAt
+.record r32 aa 2 0 "Zipper"
+.descs d33 n33 _ 1 0 "Zipper.left"
+.n -4 d33 ea33
+.o 1 0
+n33
+	push_node _cycle_in_spine 1
+.o 2 0
+ea33
+	jsr_eval 0
+	repl_r_args_a 2 0 1 1
+	jmp_eval_upd
+.descs d34 n34 _ 2 0 "Zipper.right"
+.n -4 d34 ea34
+.o 1 0
+n34
+	push_node _cycle_in_spine 1
+.o 2 0
+ea34
+	jsr_eval 0
+	repl_r_args_a 2 0 2 1
+	jmp_eval_upd
+.desc0 d66 0 "Something1"
+.desc0 d67 0 "Something2"
+.desc0 d68 0 "Something3"
+.record r38 aaa 3 0 "Machine;"
+.record r42 a 1 0 "gEq_s;"
 .export __Turing_Start
 .o 0 0
 __Turing_Start
-	build _ 0 n12
+	build _ 0 n13
 .d 1 0
 	jmp _driver
-.n 0 _ ea12
+.n 0 _ ea13
 .o 1 0
-n12
+n13
 	push_node _cycle_in_spine 0
 .o 1 0
-ea12
+ea13
+.o 1 0
+s13
+.d 1 0
+	jmp s12
 .o 1 0
 s12
-.d 1 0
-	jmp s11
-.o 1 0
-s11
+	buildh _Nil 0
 	buildh _Nil 0
 	buildI 3
-	build e__SystemEnum_d_from;4 1 e__SystemEnum_n_from;4
-	buildI 1
-	build e__SystemEnum_d_from;4 1 e__SystemEnum_n_from;4
-	build _ 2 n70
 	buildh _Cons 2
 	buildI 2
-	build e__SystemEnum_d_from;4 1 e__SystemEnum_n_from;4
-	buildh _Nil 0
-	build _ 2 n69
 	buildh _Cons 2
+	buildI 9
+	buildh _Cons 2
+	buildI 6
+	buildI 4
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	build _ 2 n1
+	buildI 3
+	buildI 1
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	buildI 6
+	buildI 4
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	build _ 2 n1
+	buildI 9
+	build _ 2 n4
+	buildh d29 0
+	build _ 3 n71
+	buildh _Cons 2
+	buildh _Nil 0
+	buildI 3
+	buildh _Cons 2
+	buildI 2
+	buildh _Cons 2
+	buildI 9
+	buildh _Cons 2
+	buildh _Nil 0
+	build _ 2 n1
+	buildI 3
+	buildI 1
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	buildh _Nil 0
+	build _ 2 n1
+	buildI 9
+	build _ 2 n4
+	buildh d29 0
+	build _ 3 n70
+	buildh _Cons 2
+	buildh _Nil 0
+	buildI 9
+	buildh _Cons 2
+	buildh _Nil 0
+	build _ 2 n1
 	buildh _Nil 0
 	buildI 1
 	buildh _Cons 2
 	buildh _Nil 0
-	build _ 2 n68
+	build _ 2 n1
+	buildI 9
+	build _ 2 n4
+	buildh d29 0
+	build _ 3 n69
 	fillh _Cons 2 2
 .d 1 0
 	rtn
-.n 2 _ ea70
+.n 3 _ ea71
+.o 1 0
+n71
+	push_node _cycle_in_spine 3
+.o 4 0
+ea71
+.o 4 0
+s71
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 3 _ ea70
 .o 1 0
 n70
-	push_node _cycle_in_spine 2
-.o 3 0
+	push_node _cycle_in_spine 3
+.o 4 0
 ea70
-.o 3 0
+.o 4 0
 s70
-	push_a 1
-	push_a 1
-	update_a 1 3
-	updatepop_a 0 2
-.d 2 0
-	jsr s1
-.o 2 0
-.d 2 0
-	jsr s3
-.o 1 0
-	pushI_a 0
+	push_a 0
+	jsr_eval 0
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
 	pop_a 1
-	pushI 3
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	eqI
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
 	fillB_b 0 0
 	pop_b 1
 .d 1 0
 	rtn
-.n 2 _ ea69
+.n 3 _ ea69
 .o 1 0
 n69
-	push_node _cycle_in_spine 2
-.o 3 0
+	push_node _cycle_in_spine 3
+.o 4 0
 ea69
-.o 3 0
+.o 4 0
 s69
-	push_a 1
-	push_a 1
-	update_a 1 3
-	updatepop_a 0 2
-.d 2 0
-	jsr s1
-.o 2 0
-.d 2 0
-	jsr s3
-.o 1 0
-	pushI_a 0
-	pop_a 1
-	pushI 2
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	eqI
-	fillB_b 0 0
-	pop_b 1
-.d 1 0
-	rtn
-.n 2 _ ea68
-.o 1 0
-n68
-	push_node _cycle_in_spine 2
-.o 3 0
-ea68
-.o 3 0
-s68
-	push_a 1
-	push_a 1
-	update_a 1 3
-	updatepop_a 0 2
-.d 2 0
-	jsr s1
-.o 2 0
-.d 2 0
-	jsr s3
-.o 1 0
-	pushI_a 0
-	pop_a 1
-	pushI 1
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	eqI
-	fillB_b 0 0
-	pop_b 1
-.d 1 0
-	rtn
-.o 2 0
-s3
-	push_a 1
+	push_a 0
 	jsr_eval 0
-	updatepop_a 0 2
+	push_a 3
+	push_a 3
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
 .d 1 0
-	jmp e_StdList_shd
+	rtn
+.desc d29 _hnf l29 2 0 "gEq_s;92"
+.a 0 a29
+.o 2 0
+l29
+	repl_args 1 1
+.o 2 0
+a29
+.d 2 0
+	jsr ea29
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea29
+.o 2 0
+s29
+	buildh e_GenEq_dgEq_Int;2 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s18
+.o 3 0
+s18
+	push_a 2
+	build _ 1 n27
+	push_a 2
+	build _ 1 n27
+	push_a 2
+	buildh e_GenEq_dgEq__List;15 1
+	build _ 0 n26
+	buildh e_GenEq_dgEq_FIELD;11 2
+	push_a 3
+	buildh e_GenEq_dgEq__List;15 1
+	build _ 0 n25
+	buildh e_GenEq_dgEq_FIELD;11 2
+	buildh e_GenEq_dgEq_PAIR;8 2
+	build _ 0 n24
+	buildh e_GenEq_dgEq_CONS;10 2
+	build _ 0 n23
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp e_GenEq_sgEq_OBJECT;12
+.n 0 _ ea23
+.o 1 0
+n23
+	push_node _cycle_in_spine 0
+.o 1 0
+ea23
+.o 1 0
+s23
+	build _ 0 n19
+	fillh e_StdGeneric_dGenericTypeDefInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea24
+.o 1 0
+n24
+	push_node _cycle_in_spine 0
+.o 1 0
+ea24
+.o 1 0
+s24
+	build _ 0 n20
+	fillh e_StdGeneric_dGenericConsInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea25
+.o 1 0
+n25
+	push_node _cycle_in_spine 0
+.o 1 0
+ea25
+.o 1 0
+s25
+	build _ 0 n21
+	fillh e_StdGeneric_dGenericFieldInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea26
+.o 1 0
+n26
+	push_node _cycle_in_spine 0
+.o 1 0
+ea26
+.o 1 0
+s26
+	build _ 0 n22
+	fillh e_StdGeneric_dGenericFieldInfo 1 1
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n19
+	push_node _cycle_in_spine 0
+.o 0 0
+ea19
+	buildh _Nil 0
+	build _ 0 n20
+	buildh _Cons 2
+	buildI 1
+	buildI 1
+	buildAC "Zipper"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericTypeDefDescriptor 4 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n21
+	push_node _cycle_in_spine 0
+.o 0 0
+ea21
+	build _ 0 n20
+	buildI 0
+	buildAC "left"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericFieldDescriptor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n20
+	push_node _cycle_in_spine 0
+.o 0 0
+ea20
+	buildh _Nil 0
+	build _ 0 n22
+	buildh _Cons 2
+	build _ 0 n21
+	buildh _Cons 2
+	pushI 0
+	build_r e_StdGeneric_kGenTypeVar 0 1 0 0
+	pop_b 1
+	buildAC "Zipper"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeApp 2
+	pushI 0
+	build_r e_StdGeneric_kGenTypeVar 0 1 0 0
+	pop_b 1
+	buildAC "_List"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeApp 2
+	buildh e_StdGeneric_dGenTypeArrow 2
+	pushI 0
+	build_r e_StdGeneric_kGenTypeVar 0 1 0 0
+	pop_b 1
+	buildAC "_List"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeApp 2
+	buildh e_StdGeneric_dGenTypeArrow 2
+	build _ 0 n19
+	buildh e_StdGeneric_dGenConsNoPrio 0
+	buildI 0
+	buildI 2
+	buildAC "_Zipper"
+	buildh ARRAY 1
+	push_a 6
+	update_a 3 7
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	fill_r e_StdGeneric_rGenericConsDescriptor 7 0 7 0 0
+	pop_a 7
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n22
+	push_node _cycle_in_spine 0
+.o 0 0
+ea22
+	build _ 0 n20
+	buildI 1
+	buildAC "right"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericFieldDescriptor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.n 1 _ ea27
+.o 1 0
+n27
+	push_node _cycle_in_spine 1
+.o 2 0
+ea27
+	jsr_eval 0
+	repl_r_args 2 0
+.o 3 0
+s27
+	push_a 1
+	buildh e_StdGeneric_dFIELD 1
+	push_a 1
+	buildh e_StdGeneric_dFIELD 1
+	buildh e_StdGeneric_dPAIR 2
+	buildh e_StdGeneric_dCONS 1
+	fillh e_StdGeneric_dOBJECT 1 3
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n4
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea4
+.o 2 0
+	fill_r r32 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea4
+.o 2 0
+s4
+	push_a 1
+	build d34 -4 n34
+	push_a 1
+	buildI 0
+	build e_StdList_dupdateAt 3 e_StdList_nupdateAt
+	push_a 2
+	build d33 -4 n33
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s1
+.n 2 _
+.o 1 0
+n1
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea1
+.o 2 0
+	fill_r r32 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea1
 .o 2 0
 s1
 	push_a 1

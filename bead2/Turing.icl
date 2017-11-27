@@ -18,10 +18,10 @@ fromList a = { left = [], right = a}
 read :: (Zipper a) -> a
 read a = hd a.right
 
-// todo
 write :: a (Zipper a) -> Zipper a
-write a b = abort "not defined"
+write a b = Z b.left (updateAt 0 a b.right)
 
+// todo
 :: Movement = Something1
 
 move :: Movement (Zipper a) -> Zipper a
@@ -70,6 +70,12 @@ test_read =
   , read (Z [] [2..])    == 2
   , read (Z [1..] [3..]) == 3
   ]
+  
+test_write =
+  [ write 9 (Z [] [1])        === Z [] [9]
+  , write 9 (Z [] [1..3])     === Z [] [9,2,3]
+  , write 9 (Z [4..6] [1..3]) === Z [4..6] [9,2,3]
+  ]
 
 /*
 tests :: [[Bool]]
@@ -89,4 +95,4 @@ tests =
 */
 
 //Start = (all and tests, zip2 [1..] (map and tests))
-Start = test_read
+Start = test_write
