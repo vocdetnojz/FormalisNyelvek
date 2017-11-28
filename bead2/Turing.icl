@@ -9,7 +9,7 @@ import StdEnv, StdLib, StdGeneric, GenEq
 // 1 	Zipper leptetese
 // 1 	Kijelolt elem kornyeke
 // ? 	Vegtelen Zipper letrehozasa listabol
-// 0 	Turing-gep tipusosztaly
+// ? 	Turing-gep tipusosztaly
 // 0 	Turing-gep adattipus
 // 0	A Turing-gep mukodese
 // 0	A Turing-gep futtatasa
@@ -44,11 +44,10 @@ move Stay a = Z a.left a.right
 around :: Int (Zipper a) -> [a]
 around a b = (reverse (take a b.left)) ++ [hd b.right] ++ (take a (tl b.right))
 
-// eddig jo
-
 fromListInf :: a [a] -> Zipper a
 fromListInf a b = Z (repeat a) (b ++ (repeat a))
 
+// eddig jo 
 
 class Machine t where
   done :: (t a) -> Bool
@@ -58,6 +57,7 @@ class Machine t where
 :: State = Something2
 
 :: TuringMachine a = Something3
+
 
 instance Machine TuringMachine where
   done a = abort "undefined"
