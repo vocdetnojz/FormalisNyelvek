@@ -54,6 +54,8 @@ class Machine t where
 
 :: State = InState Int | Accepted | Rejected
 
+derive gEq State
+
 :: TuringMachine a = {
 	stat :: State,
 	zipp :: Zipper a,
@@ -66,9 +68,12 @@ TM st zp fu = { stat=st, zipp=zp, func=fu }
 // eddig jo 
 
 instance Machine TuringMachine where
-  done a = abort "undefined"
-  tape a = abort "undefined"
-  step a = abort "undefined"
+  done a
+  	| a.stat === Accepted = True
+  	| a.stat === Rejected = True
+  	| otherwise = False
+  tape a = a.zipp
+  step a = move a.zipp a  // FIXME
 
 run :: (t a) -> [t a] | Machine t
 run a = abort "not defined"
@@ -121,6 +126,34 @@ test_around =
   ]
 */
 
+
+test_done =
+  [ not (done (TM (InState 0) undef undef))
+  , done (TM Accepted undef undef)
+  , done (TM Rejected undef undef)
+  ]
+
+test_tape =
+  [ tape (TM Accepted (fromList [1..5]) undef) === fromList [1..5]
+  ]
+
+test_step =
+  [ let m = step (TM (InState 0) (fromList ['a','b']) f)
+    in  not (done m)
+        && tape m === Z ['b'] ['b']
+  , let m = step (TM (InState 0) (fromList ['b','b']) f)
+    in  not (done m)
+        && tape m === Z ['a'] ['b']
+  , let m = step (TM (InState 1) (fromList ['a','b']) f)
+    in  done m
+        && tape m === fromList ['x','b']
+  ]
+  where
+    f 0 'a' = (InState 0, 'b', Forward)
+    f 0 'b' = (InState 0, 'a', Forward)
+    f 1 _   = (Accepted,  'x', Stay)
+
+
 tests :: [[Bool]]
 tests =
   [ test_fromList
@@ -129,13 +162,13 @@ tests =
   , test_move
   , test_around
 //  , test_fromListInf
-//  , test_done
-//  , test_tape
-//  , test_step
+  , test_done
+  , test_tape
+  , test_step
 //  , test_run
 //  , test_showStates
   ]
 
 
-Start = (all and tests, zip2 [1..] (map and tests))
-//Start = ""
+//Start = (all and tests, zip2 [1..] (map and tests))
+Start = test_step
