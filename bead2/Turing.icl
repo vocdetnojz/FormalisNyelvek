@@ -8,7 +8,7 @@ import StdEnv, StdLib, StdGeneric, GenEq
 // 1 	Kijelolt elem modositasa
 // 1 	Zipper leptetese
 // 1 	Kijelolt elem kornyeke
-// 0 	Vegtelen Zipper letrehozasa listabol
+// ? 	Vegtelen Zipper letrehozasa listabol
 // 0 	Turing-gep tipusosztaly
 // 0 	Turing-gep adattipus
 // 0	A Turing-gep mukodese
