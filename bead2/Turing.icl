@@ -10,7 +10,7 @@ import StdEnv, StdLib, StdGeneric, GenEq
 // 1 	Kijelolt elem kornyeke
 // ? 	Vegtelen Zipper letrehozasa listabol
 // ? 	Turing-gep tipusosztaly
-// 0 	Turing-gep adattipus
+// 1 	Turing-gep adattipus
 // 0	A Turing-gep mukodese
 // 0	A Turing-gep futtatasa
 // 0	Turing-gep allapotainak megjelenitese
@@ -47,17 +47,23 @@ around a b = (reverse (take a b.left)) ++ [hd b.right] ++ (take a (tl b.right))
 fromListInf :: a [a] -> Zipper a
 fromListInf a b = Z (repeat a) (b ++ (repeat a))
 
-// eddig jo 
-
 class Machine t where
   done :: (t a) -> Bool
   tape :: (t a) -> Zipper a
   step :: (t a) -> t a
 
-:: State = Something2
+:: State = InState Int | Accepted | Rejected
 
-:: TuringMachine a = Something3
+:: TuringMachine a = {
+	stat :: State,
+	zipp :: Zipper a,
+	func :: Int a -> (State, a, Movement)
+	}
 
+TM :: State (Zipper a) (Int a -> (State, a, Movement)) -> TuringMachine a
+TM st zp fu = { stat=st, zipp=zp, func=fu }
+
+// eddig jo 
 
 instance Machine TuringMachine where
   done a = abort "undefined"
@@ -131,5 +137,5 @@ tests =
   ]
 
 
-//Start = (all and tests, zip2 [1..] (map and tests))
-Start = ""
+Start = (all and tests, zip2 [1..] (map and tests))
+//Start = ""
