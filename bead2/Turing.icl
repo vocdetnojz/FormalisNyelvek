@@ -47,7 +47,8 @@ around a b = (reverse (take a b.left)) ++ [hd b.right] ++ (take a (tl b.right))
 // eddig jo
 
 fromListInf :: a [a] -> Zipper a
-fromListInf a b = abort "not defined"
+fromListInf a b = Z (repeat a) (b ++ (repeat a))
+
 
 class Machine t where
   done :: (t a) -> Bool
@@ -107,7 +108,12 @@ test_around =
   , around 3 (Z [1..] [0..]) == [3,2,1,0,1,2,3]
   ]
   
-
+/*test_fromListInf =
+  [ let (Z xs ys) = fromListInf 0 [1..5]
+    in  take 100 xs == repeatn 100 0
+        && take 100 ys == [1..5] ++ repeatn 95 0
+  ]
+*/
 
 tests :: [[Bool]]
 tests =
@@ -125,5 +131,5 @@ tests =
   ]
 
 
-Start = (all and tests, zip2 [1..] (map and tests))
-//Start = around 3 (Z [1..] [0..])
+//Start = (all and tests, zip2 [1..] (map and tests))
+Start = ""

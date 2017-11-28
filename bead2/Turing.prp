@@ -5,10 +5,10 @@ MainModule
 	DclOpen:	False
 	Icl
 		WindowPosition
-			X:	400
-			Y:	40
-			SizeX:	800
-			SizeY:	640
+			X:	283
+			Y:	1
+			SizeX:	718
+			SizeY:	717
 	IclOpen:	True
 OtherModules
 	Module

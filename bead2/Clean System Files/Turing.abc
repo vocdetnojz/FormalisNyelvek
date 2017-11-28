@@ -26,7 +26,7 @@
 .depend "StdOverloaded" "20171011182552"
 .depend "StdBool" "20171011182551"
 .depend "StdEnv" "20171011182552"
-.module m_Turing "Turing" "20171128005230"
+.module m_Turing "Turing" "20171128194904"
 .endinfo
 .implab _cycle_in_spine
 .implab _type_error
@@ -61,40 +61,7 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impdesc e__SystemEnum_d_from;4
-.implab e__SystemEnum_n_from;4 e__SystemEnum_ea_from;4
-.impdesc e_StdList_d++
-.implab e_StdList_s++
-.implab e_StdList_n++ e_StdList_ea++
-.impdesc e_StdList_dhd
-.implab e_StdList_nhd _
-.impdesc e_StdList_dtl
-.implab e_StdList_ntl e_StdList_eatl
-.impdesc e_StdList_dtake
-.implab e_StdList_stake
-.implab e_StdList_ntake e_StdList_eatake
-.implab e_StdList_sreverse
 .record r36 aa 2 0 "Zipper"
-.descs d37 n37 _ 1 0 "Zipper.left"
-.n -4 d37 ea37
-.o 1 0
-n37
-	push_node _cycle_in_spine 1
-.o 2 0
-ea37
-	jsr_eval 0
-	repl_r_args_a 2 0 1 1
-	jmp_eval_upd
-.descs d38 n38 _ 2 0 "Zipper.right"
-.n -4 d38 ea38
-.o 1 0
-n38
-	push_node _cycle_in_spine 1
-.o 2 0
-ea38
-	jsr_eval 0
-	repl_r_args_a 2 0 2 1
-	jmp_eval_upd
 .desc0 d70 0 "Forward"
 .desc0 d71 1 "Backward"
 .desc0 d72 2 "Stay"
@@ -108,73 +75,22 @@ __Turing_Start
 	build _ 0 n16
 .d 1 0
 	jmp _driver
-.n 0 _ ea16
+.n 0 _
 .o 1 0
 n16
 	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea16
 .o 1 0
-ea16
-.o 1 0
-s16
-	buildI 0
-	build e__SystemEnum_d_from;4 1 e__SystemEnum_n_from;4
-	buildI 1
-	build e__SystemEnum_d_from;4 1 e__SystemEnum_n_from;4
-	build _ 2 n1
-	pushI 3
-.d 2 1 i
-	jmp s6
-.o 2 1 i
-s6
 	push_a 0
-	build d38 -4 n38
-	build e_StdList_dtl 1 e_StdList_ntl
-	buildI_b 0
-	build e_StdList_dtake 2 e_StdList_ntake
-	buildh _Nil 0
-	push_a 2
-	build d38 -4 n38
-	build e_StdList_dhd 1 e_StdList_nhd
-	buildh _Cons 2
-	build e_StdList_d++ 2 e_StdList_n++
-	push_a 1
-	build d37 -4 n37
-	create
-	push_b 0
-	push_a 1
-	update_a 1 2
-	update_a 0 1
+	fillh ARRAY 1 2
 	pop_a 1
-	updatepop_b 0 1
-	buildh _Nil 0
-	update_a 0 4
-	pop_a 1
-.d 2 1 i
-	jsr e_StdList_stake
-.o 1 0
-	create
-	push_a 1
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-.d 2 0
-	jsr e_StdList_sreverse
-.o 1 0
-	update_a 1 2
-	updatepop_a 0 1
-.d 3 0
-	jmp e_StdList_s++
-.n 2 _
-.o 1 0
-n1
-	push_node _cycle_in_spine 2
-.o 2 0
-ea1
-	push_a 1
-	push_a 1
-	update_a 1 3
-	updatepop_a 0 2
-	fill_r r36 2 0 2 0 0
-	pop_a 2
+.d 1 0
+	rtn
+.o 0 0
+ea16
+.o 0 0
+s16
+	buildAC ""
 .d 1 0
 	rtn
