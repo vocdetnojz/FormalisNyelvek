@@ -52,6 +52,14 @@ class Machine t where
 
 derive gEq State
 
+GetInt :: State -> Int
+GetInt a
+  | a === Accepted = -9999999
+  | a === Rejected = -9999999
+  | otherwise = x
+  		where	
+  			x = hd [x1 \\ x1 <- [-999999..1000000] | a === (InState x1)]
+
 :: TuringMachine a = {
 	state :: State,
 	zipper :: Zipper a,
@@ -71,14 +79,10 @@ instance Machine TuringMachine where
   tape a = a.zipper
   step a = TM n_state (move n_move (write n_symbol a.zipper)) a.f
   	where
-  		( n_state, n_symbol, n_move ) = f state (read zipper)
+  		( n_state, n_symbol, n_move ) = a.f state (read zipper)
   			where
-  				f = a.f
-  				state = a.state
+  				state = GetInt a.state  // fixme: ez így nem foolproof
   				zipper = a.zipper
-  		
-// FIXME a.func itt csak referencia, nem hivas - f(a.stat, (read a.zipp))
-
 
 ////////// EDDIG JO //////////
 /*
@@ -135,7 +139,7 @@ test_around =
   ]
 */
 
-/*
+
 test_done =
   [ not (done (TM (InState 0) undef undef))
   , done (TM Accepted undef undef)
@@ -160,7 +164,7 @@ test_step =
   where
     f 0 'a' = (InState 0, 'b', Forward)
     f 0 'b' = (InState 0, 'a', Forward)
-    f 1 _   = (Accepted,  'x', Stay)*/
+    f 1 _   = (Accepted,  'x', Stay)
 /*
 test_run =
   [ let m = last (run (tm ['a','b','x','x']))
@@ -223,4 +227,4 @@ tests =
 
 
 //Start = (all and tests, zip2 [1..] (map and tests))
-Start = InState 0
+Start = test_step
