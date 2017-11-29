@@ -2,20 +2,7 @@ module Turing
 
 import StdEnv, StdLib, StdGeneric, GenEq
 
-// 1 	Zipper adattipus
-// 1 	Zipper letrehozasa listabol
-// 1 	Kijelolt elem lekerdezese
-// 1 	Kijelolt elem modositasa
-// 1 	Zipper leptetese
-// 1 	Kijelolt elem kornyeke
-// ? 	Vegtelen Zipper letrehozasa listabol
-// 1 	Turing-gep tipusosztaly
-// 1 	Turing-gep adattipus
-// 0	A Turing-gep mukodese
-// 0	A Turing-gep futtatasa
-// 0	Turing-gep allapotainak megjelenitese
-
-// Zipper adattípus
+// Zipper adattipus
 :: Zipper a = {
 	left :: [a],
 	right :: [a]
@@ -26,19 +13,19 @@ Z ls rs = { left = ls, right = rs }
 
 derive gEq Zipper
 
-// Zipper létrehozása listából
+// Zipper letrehozasa listabol
 fromList :: [a] -> Zipper a
 fromList a = { left = [], right = a}
 
-// Kijelölt elem lekérdezése
+// Kijelolt elem lekerdezese
 read :: (Zipper a) -> a
 read a = hd a.right
 
-// Kijelölt elem módosítása
+// Kijelolt elem modositasa
 write :: a (Zipper a) -> Zipper a
 write a b = Z b.left (updateAt 0 a b.right)
 
-// Zipper léptetése
+// Zipper leptetese
 :: Movement = Forward | Backward | Stay
 
 move :: Movement (Zipper a) -> Zipper a
@@ -46,21 +33,21 @@ move Forward a = Z ([hd a.right] ++ a.left) (tl a.right)
 move Backward a = Z (tl a.left) ([hd a.left] ++ a.right)
 move Stay a = Z a.left a.right
 
-// Kijelölt elem környéke
+// Kijelolt elem kornyeke
 around :: Int (Zipper a) -> [a]
 around a b = (reverse (take a b.left)) ++ [hd b.right] ++ (take a (tl b.right))
 
-// Végtelen zipper létrehozása listából
+// Vegtelen zipper letrehozasa listabol
 fromListInf :: a [a] -> Zipper a
 fromListInf a b = Z (repeat a) (b ++ (repeat a))
 
-// Turing-gép típusosztály
+// Turing-gep tipusosztaly
 class Machine t where
   done :: (t a) -> Bool
   tape :: (t a) -> Zipper a
   step :: (t a) -> t a
 
-// Turing-gép adattípus
+// Turing-gep adattípus
 :: State = InState Int | Accepted | Rejected
 
 derive gEq State
@@ -74,23 +61,23 @@ derive gEq State
 TM :: State (Zipper a) (Int a -> (State, a, Movement)) -> TuringMachine a
 TM st zp fu = { stat=st, zipp=zp, func=fu }
 
-// A Turing-gép mûködése
+// A Turing-gep mukodese
 instance Machine TuringMachine where
   done a
   	| a.stat === Accepted = True
   	| a.stat === Rejected = True
   	| otherwise = False
   tape a = a.zipp
-  step a = move a.zipp a  // FIXME
+  step a = a.func a.stat (read a.zipp)  // FIXME a.func itt csak referencia, nem hivas - f(a.stat, (read a.zipp))
 
 
-////////// EDDIG JÓ //////////
+////////// EDDIG JO //////////
 
-// A Turing-gép futtatása
+// A Turing-gep futtatasa
 run :: (t a) -> [t a] | Machine t
 run a = abort "not defined"
 
-// Turing-gép állapotainak megjelenítése
+// Turing-gep allapotainak megjelenitese
 showStates :: (t Char) -> [String] | Machine t
 showStates a = abort "not defined"
 
