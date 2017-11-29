@@ -47,36 +47,41 @@ class Machine t where
   tape :: (t a) -> Zipper a
   step :: (t a) -> t a
 
-// Turing-gep adatt�pus
+// Turing-gep adattipus
 :: State = InState Int | Accepted | Rejected
 
 derive gEq State
 
 :: TuringMachine a = {
-	stat :: State,
-	zipp :: Zipper a,
-	func :: Int a -> (State, a, Movement)
+	state :: State,
+	zipper :: Zipper a,
+	f :: Int a -> (State, a, Movement)
 	}
 
 TM :: State (Zipper a) (Int a -> (State, a, Movement)) -> TuringMachine a
-TM st zp fu = { stat=st, zipp=zp, func=fu }
+TM st zp fu = { state=st, zipper=zp, f=fu }
 
 // A Turing-gep mukodese
+
 instance Machine TuringMachine where
   done a
-  	| a.stat === Accepted = True
-  	| a.stat === Rejected = True
+  	| a.state === Accepted = True
+  	| a.state === Rejected = True
   	| otherwise = False
-  tape a = a.zipp
-  step a = a.func a.stat (read a.zipp)  
-    where
-        (a.func a.stat (read a.zipp)) = a 
-
+  tape a = a.zipper
+  step a = TM n_state (move n_move (write n_symbol a.zipper)) a.f
+  	where
+  		( n_state, n_symbol, n_move ) = f state (read zipper)
+  			where
+  				f = a.f
+  				state = a.state
+  				zipper = a.zipper
+  		
 // FIXME a.func itt csak referencia, nem hivas - f(a.stat, (read a.zipp))
 
 
 ////////// EDDIG JO //////////
-
+/*
 // A Turing-gep futtatasa
 run :: (t a) -> [t a] | Machine t
 run a = abort "not defined"
@@ -84,7 +89,7 @@ run a = abort "not defined"
 // Turing-gep allapotainak megjelenitese
 showStates :: (t Char) -> [String] | Machine t
 showStates a = abort "not defined"
-
+*/
 ///////////////////////////// TESTS ///////////////////////////////////
 
 test_fromList =
@@ -130,7 +135,7 @@ test_around =
   ]
 */
 
-
+/*
 test_done =
   [ not (done (TM (InState 0) undef undef))
   , done (TM Accepted undef undef)
@@ -155,7 +160,7 @@ test_step =
   where
     f 0 'a' = (InState 0, 'b', Forward)
     f 0 'b' = (InState 0, 'a', Forward)
-    f 1 _   = (Accepted,  'x', Stay)
+    f 1 _   = (Accepted,  'x', Stay)*/
 /*
 test_run =
   [ let m = last (run (tm ['a','b','x','x']))
@@ -209,13 +214,13 @@ tests =
   , test_move
   , test_around
 //  , test_fromListInf
-  , test_done
-  , test_tape
-  , test_step
+//  , test_done
+//  , test_tape
+//  , test_step
 //  , test_run
 //  , test_showStates
   ]
 
 
 //Start = (all and tests, zip2 [1..] (map and tests))
-Start = test_step
+Start = InState 0
