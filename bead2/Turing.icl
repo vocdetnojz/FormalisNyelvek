@@ -86,13 +86,32 @@ instance Machine TuringMachine where
 
 // A Turing-gep futtatasa
 run :: (t a) -> [t a] | Machine t
-run a = abort "not defined"
+run a
+  | done a == True = [a]
+  | otherwise = [a] ++ run (step a) 
 
 
 // Turing-gep allapotainak megjelenitese
 showStates :: (t Char) -> [String] | Machine t
 showStates a = abort "not defined"
 
+test_run =
+  [ let m = last (run (tm ['a','b','x','x']))
+    in done m
+       && tape m === Z ['x','a','b'] ['x']
+  , let m = last (run (tm ['b','a','x','x']))
+    in done m
+       && tape m === Z ['x','b','a'] ['x']
+  , let m = last (run (tm ['a','b','x','a']))
+    in done m
+       && tape m === Z ['x','a','b'] ['!']
+  ]
+  where
+    tm xs = TM (InState 0) (fromList xs) f
+    f 0 'a' = (InState 0, 'b', Forward)
+    f 0 'b' = (InState 0, 'a', Forward)
+    f 0 'x' = (InState 1, 'x', Forward)
+    f 1 'x' = (Accepted,  'x', Stay)
+    f _ ch  = (Rejected,  '!', Stay)
 
-
-Start = "N5XGDH"
+Start = test_run

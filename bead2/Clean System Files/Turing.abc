@@ -26,7 +26,7 @@
 .depend "StdOverloaded" "20171011182552"
 .depend "StdBool" "20171011182551"
 .depend "StdEnv" "20171011182552"
-.module m_Turing "Turing" "20171129222354"
+.module m_Turing "Turing" "20171129223621"
 .endinfo
 .implab _cycle_in_spine
 .implab _type_error
@@ -61,38 +61,1373 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.record r39 aa 2 0 "Zipper"
-.desc0 d76 0 "Forward"
-.desc0 d77 1 "Backward"
-.desc0 d78 2 "Stay"
-.desc d79 _hnf _add_arg 1 0 "InState"
-.desc d80 _hnf _hnf 0 0 "Accepted"
-.desc d81 _hnf _hnf 0 0 "Rejected"
-.record r44 aaa 3 0 "TuringMachine"
-.record r48 aaa 3 0 "Machine;"
-.record r52 a 1 0 "gEq_s;"
-.export __Turing_Start
-.o 0 0
-__Turing_Start
-	build _ 0 n12
-.d 1 0
-	jmp _driver
-.n 0 _
+.implab e_GenEq_s===
+.impdesc e_GenEq_dgEq_Int;2
+.impdesc e_GenEq_dgEq_Char;3
+.impdesc e_GenEq_dgEq_UNIT;7
+.impdesc e_GenEq_dgEq_PAIR;8
+.impdesc e_GenEq_dgEq_EITHER;9
+.impdesc e_GenEq_dgEq_CONS;10
+.impdesc e_GenEq_dgEq_FIELD;11
+.implab e_GenEq_sgEq_OBJECT;12
+.impdesc e_GenEq_dgEq__List;15
+.impdesc e_StdGeneric_rGenericConsDescriptor
+.impdesc e_StdGeneric_rGenericFieldDescriptor
+.impdesc e_StdGeneric_rGenericTypeDefDescriptor
+.impdesc e_StdGeneric_kGenTypeVar
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.impdesc e_StdList_dhd
+.implab e_StdList_shd
+.implab e_StdList_nhd _
+.impdesc e_StdList_dtl
+.implab e_StdList_ntl e_StdList_eatl
+.impdesc e_StdList_dlast
+.implab e_StdList_nlast _
+.impdesc e_StdList_dupdateAt
+.implab e_StdList_nupdateAt e_StdList_eaupdateAt
+.implab e_StdInt_s+;6
+.implab e_StdInt_sone;11
+.implab e_StdInt_s<;17
+.implab e_StdBool_snot
+.implab e_StdBool_s==;3
+.record r48 aa 2 0 "Zipper"
+.descs d49 n49 _ 1 0 "Zipper.left"
+.n -4 d49 ea49
 .o 1 0
-n12
-	push_node _cycle_in_spine 0
-.d 0 0
-	jsr ea12
+n49
+	push_node _cycle_in_spine 1
+.o 2 0
+ea49
+	jsr_eval 0
+	repl_r_args_a 2 0 1 1
+	jmp_eval_upd
+.descs d50 n50 _ 2 0 "Zipper.right"
+.n -4 d50 ea50
 .o 1 0
-	push_a 0
-	fillh ARRAY 1 2
+n50
+	push_node _cycle_in_spine 1
+.o 2 0
+ea50
+	jsr_eval 0
+	repl_r_args_a 2 0 2 1
+	jmp_eval_upd
+.desc0 d85 0 "Forward"
+.desc0 d86 1 "Backward"
+.desc0 d87 2 "Stay"
+.desc d88 _hnf _add_arg 1 0 "InState"
+.desc d89 _hnf _hnf 0 0 "Accepted"
+.desc d90 _hnf _hnf 0 0 "Rejected"
+.record r53 aaa 3 0 "TuringMachine"
+.descs d54 n54 _ 1 0 "TuringMachine.state"
+.n -4 d54 ea54
+.o 1 0
+n54
+	push_node _cycle_in_spine 1
+.o 2 0
+ea54
+	jsr_eval 0
+	repl_r_args_a 3 0 1 1
+	jmp_eval_upd
+.descs d55 n55 _ 3 0 "TuringMachine.zipper"
+.n -4 d55
+.o 1 0
+n55
+	push_node _cycle_in_spine 1
+	jsr_eval 0
+	repl_r_args_a 3 0 2 1
+	jsr_eval 0
+	fill_a 0 1
 	pop_a 1
 .d 1 0
 	rtn
+.descs d56 n56 _ 4 0 "TuringMachine.f"
+.n -4 d56 ea56
+.o 1 0
+n56
+	push_node _cycle_in_spine 1
+.o 2 0
+ea56
+	jsr_eval 0
+	repl_r_args_a 3 0 3 1
+	jmp_eval_upd
+.record r57 aaa 3 0 "Machine;"
+.record r61 a 1 0 "gEq_s;"
+.export __Turing_Start
 .o 0 0
-ea12
-.o 0 0
-s12
-	buildAC "N5XGDH"
+__Turing_Start
+	build _ 0 n13
 .d 1 0
+	jmp _driver
+.n 0 _ ea13
+.o 1 0
+n13
+	push_node _cycle_in_spine 0
+.o 1 0
+ea13
+.o 1 0
+s13
+.d 1 0
+	jmp s12
+.o 1 0
+s12
+	buildh _Nil 0
+	buildC 'x'
+	buildh _Cons 2
+	buildC 'x'
+	buildh _Cons 2
+	buildC 'b'
+	buildh _Cons 2
+	buildC 'a'
+	buildh _Cons 2
+	build _ 1 n15
+	build _ 1 n41
+	build e_StdList_dlast 1 e_StdList_nlast
+	buildh _Nil 0
+	buildC 'x'
+	buildh _Cons 2
+	buildC 'x'
+	buildh _Cons 2
+	buildC 'a'
+	buildh _Cons 2
+	buildC 'b'
+	buildh _Cons 2
+	build _ 1 n15
+	build _ 1 n41
+	build e_StdList_dlast 1 e_StdList_nlast
+	buildh _Nil 0
+	buildC 'a'
+	buildh _Cons 2
+	buildC 'x'
+	buildh _Cons 2
+	buildC 'b'
+	buildh _Cons 2
+	buildC 'a'
+	buildh _Cons 2
+	build _ 1 n15
+	build _ 1 n41
+	build e_StdList_dlast 1 e_StdList_nlast
+	buildh _Nil 0
+	push_a 1
+	build _ 1 n93
+	buildh _Cons 2
+	push_a 2
+	build _ 1 n92
+	buildh _Cons 2
+	push_a 3
+	build _ 1 n91
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+.n 1 _ ea93
+.o 1 0
+n93
+	push_node _cycle_in_spine 1
+.o 2 0
+ea93
+.o 2 0
+s93
+	push_a 0
+.d 1 0
+	jsr s17
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s45
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea92
+.o 1 0
+n92
+	push_node _cycle_in_spine 1
+.o 2 0
+ea92
+.o 2 0
+s92
+	push_a 0
+.d 1 0
+	jsr s17
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s44
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.n 1 _ ea91
+.o 1 0
+n91
+	push_node _cycle_in_spine 1
+.o 2 0
+ea91
+.o 2 0
+s91
+	push_a 0
+.d 1 0
+	jsr s17
+.o 0 1 b
+	push_a 0
+	updatepop_a 0 1
+.d 1 1 b
+	jsr s43
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 1 b
+s45
+	eqB_b TRUE 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	buildh _Nil 0
+	buildC '!'
+	buildh _Cons 2
+	buildh _Nil 0
+	buildC 'b'
+	buildh _Cons 2
+	buildC 'a'
+	buildh _Cons 2
+	buildC 'x'
+	buildh _Cons 2
+	build _ 2 n1
+	push_a 1
+	build _ 1 n19
+	buildh d42 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	jmp e_GenEq_s===
+case.2
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 1 1 b
+s44
+	eqB_b TRUE 0
+	jmp_true case.3
+	jmp case.4
+case.3
+	buildh _Nil 0
+	buildC 'x'
+	buildh _Cons 2
+	buildh _Nil 0
+	buildC 'a'
+	buildh _Cons 2
+	buildC 'b'
+	buildh _Cons 2
+	buildC 'x'
+	buildh _Cons 2
+	build _ 2 n1
+	push_a 1
+	build _ 1 n19
+	buildh d42 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	jmp e_GenEq_s===
+case.4
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.o 1 1 b
+s43
+	eqB_b TRUE 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	buildh _Nil 0
+	buildC 'x'
+	buildh _Cons 2
+	buildh _Nil 0
+	buildC 'b'
+	buildh _Cons 2
+	buildC 'a'
+	buildh _Cons 2
+	buildC 'x'
+	buildh _Cons 2
+	build _ 2 n1
+	push_a 1
+	build _ 1 n19
+	buildh d42 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	jmp e_GenEq_s===
+case.6
+	pop_a 1
+	pop_b 1
+	pushB FALSE
+.d 0 1 b
+	rtn
+.desc d42 _hnf l42 2 0 "gEq_s;107"
+.a 0 a42
+.o 2 0
+l42
+	repl_args 1 1
+.o 2 0
+a42
+.d 2 0
+	jsr ea42
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea42
+.o 2 0
+s42
+	buildh e_GenEq_dgEq_Char;3 0
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s20
+.n 1 _ ea41
+.o 1 0
+n41
+	push_node _cycle_in_spine 1
+.o 2 0
+ea41
+.o 2 0
+s41
+	push_a 0
+.d 1 0
+	jsr s17
+.o 0 1 b
+	pushB TRUE
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqB
+	jmp_false else.7
+	buildh _Nil 0
+	push_a 1
+	fillh _Cons 2 3
+	pop_a 1
+.d 1 0
+	rtn
+else.7
+	push_a 0
+	build _ 1 n18
+	build _ 1 n41
+	buildh _Nil 0
+	push_a 2
+	buildh _Cons 2
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_StdList_s++
+.o 3 0
+s20
+	push_a 2
+	build _ 1 n30
+	push_a 2
+	build _ 1 n30
+	push_a 2
+	buildh e_GenEq_dgEq__List;15 1
+	build _ 0 n29
+	buildh e_GenEq_dgEq_FIELD;11 2
+	push_a 3
+	buildh e_GenEq_dgEq__List;15 1
+	build _ 0 n28
+	buildh e_GenEq_dgEq_FIELD;11 2
+	buildh e_GenEq_dgEq_PAIR;8 2
+	build _ 0 n27
+	buildh e_GenEq_dgEq_CONS;10 2
+	build _ 0 n26
+	update_a 3 6
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 0
+	jmp e_GenEq_sgEq_OBJECT;12
+.n 0 _ ea26
+.o 1 0
+n26
+	push_node _cycle_in_spine 0
+.o 1 0
+ea26
+.o 1 0
+s26
+	build _ 0 n22
+	fillh e_StdGeneric_dGenericTypeDefInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea27
+.o 1 0
+n27
+	push_node _cycle_in_spine 0
+.o 1 0
+ea27
+.o 1 0
+s27
+	build _ 0 n23
+	fillh e_StdGeneric_dGenericConsInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea28
+.o 1 0
+n28
+	push_node _cycle_in_spine 0
+.o 1 0
+ea28
+.o 1 0
+s28
+	build _ 0 n24
+	fillh e_StdGeneric_dGenericFieldInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea29
+.o 1 0
+n29
+	push_node _cycle_in_spine 0
+.o 1 0
+ea29
+.o 1 0
+s29
+	build _ 0 n25
+	fillh e_StdGeneric_dGenericFieldInfo 1 1
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n22
+	push_node _cycle_in_spine 0
+.o 0 0
+ea22
+	buildh _Nil 0
+	build _ 0 n23
+	buildh _Cons 2
+	buildI 1
+	buildI 1
+	buildAC "Zipper"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericTypeDefDescriptor 4 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n24
+	push_node _cycle_in_spine 0
+.o 0 0
+ea24
+	build _ 0 n23
+	buildI 0
+	buildAC "left"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericFieldDescriptor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n23
+	push_node _cycle_in_spine 0
+.o 0 0
+ea23
+	buildh _Nil 0
+	build _ 0 n25
+	buildh _Cons 2
+	build _ 0 n24
+	buildh _Cons 2
+	pushI 0
+	build_r e_StdGeneric_kGenTypeVar 0 1 0 0
+	pop_b 1
+	buildAC "Zipper"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeApp 2
+	pushI 0
+	build_r e_StdGeneric_kGenTypeVar 0 1 0 0
+	pop_b 1
+	buildAC "_List"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeApp 2
+	buildh e_StdGeneric_dGenTypeArrow 2
+	pushI 0
+	build_r e_StdGeneric_kGenTypeVar 0 1 0 0
+	pop_b 1
+	buildAC "_List"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeApp 2
+	buildh e_StdGeneric_dGenTypeArrow 2
+	build _ 0 n22
+	buildh e_StdGeneric_dGenConsNoPrio 0
+	buildI 0
+	buildI 2
+	buildAC "_Zipper"
+	buildh ARRAY 1
+	push_a 6
+	update_a 3 7
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	fill_r e_StdGeneric_rGenericConsDescriptor 7 0 7 0 0
+	pop_a 7
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n25
+	push_node _cycle_in_spine 0
+.o 0 0
+ea25
+	build _ 0 n23
+	buildI 1
+	buildAC "right"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericFieldDescriptor 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.n 1 _ ea30
+.o 1 0
+n30
+	push_node _cycle_in_spine 1
+.o 2 0
+ea30
+	jsr_eval 0
+	repl_r_args 2 0
+.o 3 0
+s30
+	push_a 1
+	buildh e_StdGeneric_dFIELD 1
+	push_a 1
+	buildh e_StdGeneric_dFIELD 1
+	buildh e_StdGeneric_dPAIR 2
+	buildh e_StdGeneric_dCONS 1
+	fillh e_StdGeneric_dOBJECT 1 3
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n19
+	push_node _cycle_in_spine 1
+.o 1 0
+ea19
+	jsr_eval 0
+	repl_r_args 3 0
+	jsr_eval 1
+	updatepop_a 1 2
+	repl_r_args 2 0
+	fill_r r48 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 1 _
+.o 1 0
+n18
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea18
+.o 3 0
+	fill_r r53 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 1 0
+ea18
+.o 1 0
+s18
+	push_a 0
+	build d55 -4 n55
+	build _ 1 n3
+	push_a 1
+	build d54 -4 n54
+	build _ 1 n8
+	push_a 2
+	build d56 -4 n56
+	build _ 3 n94
+	push_a 1
+	build d56 -4 n56
+	push_a 2
+	build d55 -4 n55
+	push_a 2
+	build d_S.2 -1 n_S.2
+	build _ 2 n4
+	push_a 2
+	build d_S.3 -1 n_S.3
+	build _ 2 n5
+	push_a 2
+	build d_S.1 -1 n_S.1
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s9
+.n 3 _ ea94
+.o 1 0
+n94
+	push_node _cycle_in_spine 3
+.o 4 0
+ea94
+.o 4 0
+s94
+	push_a 2
+	push_a 1
+	jsr_eval 0
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+	jsr_ap 2
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+s17
+	buildh d89 0
+	push_a 1
+	build d54 -4 n54
+	buildh d21 0
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	jmp_false else.8
+	pop_a 1
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.8
+	buildh d90 0
+	push_a 1
+	build d54 -4 n54
+	buildh d21 0
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	jmp_false else.9
+	pushB TRUE
+.d 0 1 b
+	rtn
+else.9
+	pushB FALSE
+.d 0 1 b
+	rtn
+.n 1 _
+.o 1 0
+n15
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea15
+.o 3 0
+	fill_r r53 3 0 3 0 0
+	pop_a 3
+.d 1 0
+	rtn
+.o 1 0
+ea15
+.o 1 0
+s15
+	buildh d16 0
+	push_a 1
+	build _ 1 n2
+	buildI 0
+	buildh d88 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp s9
+.desc d16 _hnf l16 2 0 "f;15"
+.a 0 a16
+.o 2 0
+l16
+	repl_args 1 1
+.o 2 0
+a16
+.d 2 0
+	jsr ea16
+.o 3 0
+	push_a 2
+	push_a 2
+	push_a 2
+	buildh _Tuple 3
+	updatepop_a 0 3
+.d 1 0
+	rtn
+.o 2 0
+ea16
+	jsr_eval 0
+	pushI_a 0
+	pop_a 1
+.o 1 1 i
+s16
+	eqI_b 0 0
+	jmp_true case.10
+	eqI_b 1 0
+	jmp_true case.11
+	jmp case.12
+case.10
+	jsr_eval 0
+	pushC_a 0
+	eqC_b 'a' 0
+	jmp_true case.13
+	eqC_b 'b' 0
+	jmp_true case.14
+	eqC_b 'x' 0
+	jmp_true case.15
+	pop_b 1
+	jmp case.12
+case.13
+	pop_b 1
+	buildh d85 0
+	buildI 0
+	buildh d88 1
+	buildC 'b'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	rtn
+case.14
+	pop_b 1
+	buildh d85 0
+	buildI 0
+	buildh d88 1
+	buildC 'a'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	rtn
+case.15
+	pop_b 1
+	buildh d85 0
+	buildI 1
+	buildh d88 1
+	buildC 'x'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	rtn
+case.11
+	jsr_eval 0
+	eqC_a 'x' 0
+	jmp_true case.16
+	jmp case.12
+case.16
+	buildh d87 0
+	buildh d89 0
+	buildC 'x'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	rtn
+case.12
+	buildh d87 0
+	buildh d90 0
+	buildC '!'
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+	pop_b 1
+.d 3 0
+	rtn
+.o 3 0
+s9
+	push_a 2
+	push_a 2
+	push_a 2
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	rtn
+.n 1 _
+.o 1 0
+n8
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea8
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea8
+.o 1 0
+s8
+	buildh d89 0
+	buildh d21 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	jmp_false else.17
+	pop_a 1
+	pushI -9999999
+.d 0 1 i
+	rtn
+else.17
+	buildh d90 0
+	buildh d21 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	jmp_false else.18
+	pop_a 1
+	pushI -9999999
+.d 0 1 i
+	rtn
+else.18
+	create
+	pushI 1000000
+	pushI -999999
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 2 ii
+	jsr s14
+.o 1 0
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+	pushI_a 0
+	pop_a 1
+.d 0 1 i
+	rtn
+.o 2 2 ii
+s14
+	push_b 0
+	push_b 2
+	ltI
+	notB
+	jmp_false else.19
+	buildI_b 0
+	buildh d88 1
+	buildh d21 0
+	push_a 2
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 3 0
+	jsr e_GenEq_s===
+.o 0 1 b
+	jmp_false else.20
+	push_b 1
+	push_b 1
+	push_a 0
+	build_u _ 1 2 n95
+	buildI_b 0
+	fillh _Cons 2 3
+	pop_a 1
+	pop_b 2
+.d 1 0
+	rtn
+else.20
+	pushI 1
+	push_b 1
+	addI
+	push_b 2
+	push_a 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 2 2 ii
+	jmp s14
+else.19
+	fillh _Nil 0 1
+	pop_a 1
+	pop_b 2
+.d 1 0
+	rtn
+.nu 1 2 _ _
+.o 1 0
+n95
+	push_node_u _cycle_in_spine 1 2
+.o 2 2 ii
+ea95
+.o 2 2 ii
+s95
+	pushI 1
+	push_b 1
+	addI
+	push_b 2
+	push_a 0
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	updatepop_a 0 1
+	update_b 1 3
+	updatepop_b 0 2
+.d 2 2 ii
+	jmp s14
+.desc d21 _hnf l21 2 0 "gEq_State;20"
+.a 0 a21
+.o 2 0
+l21
+	repl_args 1 1
+.o 2 0
+a21
+.d 2 0
+	jsr ea21
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea21
+.o 2 0
+s21
+	push_a 1
+	build _ 1 n39
+	push_a 1
+	build _ 1 n39
+	buildh e_GenEq_dgEq_UNIT;7 0
+	build _ 0 n38
+	buildh e_GenEq_dgEq_CONS;10 2
+	buildh e_GenEq_dgEq_UNIT;7 0
+	build _ 0 n37
+	buildh e_GenEq_dgEq_CONS;10 2
+	buildh e_GenEq_dgEq_EITHER;9 2
+	buildh e_GenEq_dgEq_Int;2 0
+	build _ 0 n36
+	buildh e_GenEq_dgEq_CONS;10 2
+	buildh e_GenEq_dgEq_EITHER;9 2
+	build _ 0 n35
+	update_a 3 5
+	update_a 2 4
+	update_a 1 3
+	updatepop_a 0 2
+.d 4 0
+	jmp e_GenEq_sgEq_OBJECT;12
+.n 0 _ ea35
+.o 1 0
+n35
+	push_node _cycle_in_spine 0
+.o 1 0
+ea35
+.o 1 0
+s35
+	build _ 0 n31
+	fillh e_StdGeneric_dGenericTypeDefInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea36
+.o 1 0
+n36
+	push_node _cycle_in_spine 0
+.o 1 0
+ea36
+.o 1 0
+s36
+	build _ 0 n32
+	fillh e_StdGeneric_dGenericConsInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea37
+.o 1 0
+n37
+	push_node _cycle_in_spine 0
+.o 1 0
+ea37
+.o 1 0
+s37
+	build _ 0 n33
+	fillh e_StdGeneric_dGenericConsInfo 1 1
+.d 1 0
+	rtn
+.n 0 _ ea38
+.o 1 0
+n38
+	push_node _cycle_in_spine 0
+.o 1 0
+ea38
+.o 1 0
+s38
+	build _ 0 n34
+	fillh e_StdGeneric_dGenericConsInfo 1 1
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n32
+	push_node _cycle_in_spine 0
+.o 0 0
+ea32
+	buildh _Nil 0
+	buildAC "State"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildAC "Int"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	buildh e_StdGeneric_dGenTypeArrow 2
+	build _ 0 n31
+	buildh e_StdGeneric_dGenConsNoPrio 0
+	buildI 0
+	buildI 1
+	buildAC "InState"
+	buildh ARRAY 1
+	push_a 6
+	update_a 3 7
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	fill_r e_StdGeneric_rGenericConsDescriptor 7 0 7 0 0
+	pop_a 7
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n33
+	push_node _cycle_in_spine 0
+.o 0 0
+ea33
+	buildh _Nil 0
+	buildAC "State"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	build _ 0 n31
+	buildh e_StdGeneric_dGenConsNoPrio 0
+	buildI 1
+	buildI 0
+	buildAC "Accepted"
+	buildh ARRAY 1
+	push_a 6
+	update_a 3 7
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	fill_r e_StdGeneric_rGenericConsDescriptor 7 0 7 0 0
+	pop_a 7
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n31
+	push_node _cycle_in_spine 0
+.o 0 0
+ea31
+	buildh _Nil 0
+	build _ 0 n34
+	buildh _Cons 2
+	build _ 0 n33
+	buildh _Cons 2
+	build _ 0 n32
+	buildh _Cons 2
+	buildI 3
+	buildI 0
+	buildAC "State"
+	buildh ARRAY 1
+	fill_r e_StdGeneric_rGenericTypeDefDescriptor 4 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n34
+	push_node _cycle_in_spine 0
+.o 0 0
+ea34
+	buildh _Nil 0
+	buildAC "State"
+	buildh ARRAY 1
+	buildh e_StdGeneric_dGenTypeCons 1
+	build _ 0 n31
+	buildh e_StdGeneric_dGenConsNoPrio 0
+	buildI 2
+	buildI 0
+	buildAC "Rejected"
+	buildh ARRAY 1
+	push_a 6
+	update_a 3 7
+	update_a 4 3
+	update_a 5 4
+	update_a 6 5
+	update_a 0 6
+	pop_a 1
+	fill_r e_StdGeneric_rGenericConsDescriptor 7 0 7 0 0
+	pop_a 7
+.d 1 0
+	rtn
+.n 1 _ ea39
+.o 1 0
+n39
+	push_node _cycle_in_spine 1
+.o 2 0
+ea39
+	jsr_eval 0
+.o 2 0
+s39
+	pushD_a 0
+	eqD_b d88 1
+	jmp_true case.21
+	eqD_b d89 0
+	jmp_true case.22
+	jmp case.23
+case.21
+	pop_b 1
+	repl_args 1 1
+	push_a 0
+	buildh e_StdGeneric_dCONS 1
+	buildh e_StdGeneric_dLEFT 1
+	fillh e_StdGeneric_dOBJECT 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.22
+	pop_b 1
+	buildh e_StdGeneric_dUNIT 0
+	buildh e_StdGeneric_dCONS 1
+	buildh e_StdGeneric_dLEFT 1
+	buildh e_StdGeneric_dRIGHT 1
+	fillh e_StdGeneric_dOBJECT 1 2
+	pop_a 1
+.d 1 0
+	rtn
+case.23
+	pop_b 1
+	buildh e_StdGeneric_dUNIT 0
+	buildh e_StdGeneric_dCONS 1
+	buildh e_StdGeneric_dRIGHT 1
+	buildh e_StdGeneric_dRIGHT 1
+	fillh e_StdGeneric_dOBJECT 1 2
+	pop_a 1
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n5
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea5
+.o 2 0
+	fill_r r48 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea5
+	jsr_eval 0
+.o 2 0
+s5
+	pushD_a 0
+	eqD_b d85 0
+	jmp_true case.24
+	eqD_b d86 0
+	jmp_true case.25
+	jmp case.26
+case.24
+	pop_b 1
+	push_a 1
+	build d50 -4 n50
+	build e_StdList_dtl 1 e_StdList_ntl
+	push_a 2
+	build d49 -4 n49
+	buildh _Nil 0
+	push_a 4
+	build d50 -4 n50
+	build e_StdList_dhd 1 e_StdList_nhd
+	buildh _Cons 2
+	build e_StdList_d++ 2 e_StdList_n++
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s1
+case.25
+	pop_b 1
+	push_a 1
+	build d50 -4 n50
+	buildh _Nil 0
+	push_a 3
+	build d49 -4 n49
+	build e_StdList_dhd 1 e_StdList_nhd
+	buildh _Cons 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 2
+	build d49 -4 n49
+	build e_StdList_dtl 1 e_StdList_ntl
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s1
+case.26
+	pop_b 1
+	push_a 1
+	build d50 -4 n50
+	push_a 2
+	build d49 -4 n49
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s1
+.n 2 _
+.o 1 0
+n4
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea4
+.o 2 0
+	fill_r r48 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea4
+.o 2 0
+s4
+	push_a 1
+	build d50 -4 n50
+	push_a 1
+	buildI 0
+	build e_StdList_dupdateAt 3 e_StdList_nupdateAt
+	push_a 2
+	build d49 -4 n49
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	jmp s1
+.n 1 _ _
+.o 1 0
+n3
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea3
+.o 1 0
+	fill_a 0 1
+	pop_a 1
+.d 1 0
+	rtn
+.o 1 0
+ea3
+	jsr_eval 0
+	repl_r_args 2 0
+.o 2 0
+s3
+	push_a 1
+	jsr_eval 0
+	updatepop_a 0 2
+.d 1 0
+	jmp e_StdList_shd
+.n 1 _
+.o 1 0
+n2
+	push_node _cycle_in_spine 1
+.o 1 0
+ea2
+	buildh _Nil 0
+	push_a 1
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 1 2
+	updatepop_a 0 1
+	fill_r r48 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.n 2 _
+.o 1 0
+n1
+	push_node _cycle_in_spine 2
+.d 2 0
+	jsr ea1
+.o 2 0
+	fill_r r48 2 0 2 0 0
+	pop_a 2
+.d 1 0
+	rtn
+.o 2 0
+ea1
+.o 2 0
+s1
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
 	rtn
