@@ -82,14 +82,13 @@ instance Machine TuringMachine where
   				state = GetInt a.state  // fixme: ez így nem foolproof
   				zipper = a.zipper
 
-////////// EDDIG JO //////////
-
 // A Turing-gep futtatasa
 run :: (t a) -> [t a] | Machine t
 run a
   | done a == True = [a]
   | otherwise = [a] ++ run (step a) 
 
+////////// EDDIG JO //////////
 
 // Turing-gep allapotainak megjelenitese
 showStates :: (t Char) -> [String] | Machine t
