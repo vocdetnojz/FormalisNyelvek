@@ -47,7 +47,7 @@ class Machine t where
   tape :: (t a) -> Zipper a
   step :: (t a) -> t a
 
-// Turing-gep adattípus
+// Turing-gep adattï¿½pus
 :: State = InState Int | Accepted | Rejected
 
 derive gEq State
@@ -68,7 +68,11 @@ instance Machine TuringMachine where
   	| a.stat === Rejected = True
   	| otherwise = False
   tape a = a.zipp
-  step a = a.func a.stat (read a.zipp)  // FIXME a.func itt csak referencia, nem hivas - f(a.stat, (read a.zipp))
+  step a = a.func a.stat (read a.zipp)  
+    where
+        (a.func a.stat (read a.zipp)) = a 
+
+// FIXME a.func itt csak referencia, nem hivas - f(a.stat, (read a.zipp))
 
 
 ////////// EDDIG JO //////////
