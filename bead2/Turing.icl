@@ -2,101 +2,65 @@ module Turing
 
 import StdEnv, StdLib, StdGeneric, GenEq
 
-// Zipper adattipus
-:: Zipper a = {
-	left :: [a],
-	right :: [a]
-	}
-Z :: [a] [a] -> Zipper a
-Z ls rs = { left = ls, right = rs }
+:: Zipper a = Z [a] [a]
 
 derive gEq Zipper
 
-// Zipper letrehozasa listabol
 fromList :: [a] -> Zipper a
-fromList a = { left = [], right = a}
+fromList a = Z [] a
 
-// Kijelolt elem lekerdezese
 read :: (Zipper a) -> a
-read a = hd a.right
+read (Z x [y:ys]) = y
 
-// Kijelolt elem modositasa
 write :: a (Zipper a) -> Zipper a
-write a b = Z b.left (updateAt 0 a b.right)
+write a (Z x [y:ys]) = Z x [a:ys]
 
-// Zipper leptetese
 :: Movement = Forward | Backward | Stay
 
 move :: Movement (Zipper a) -> Zipper a
-move Forward a = Z ([hd a.right] ++ a.left) (tl a.right)
-move Backward a = Z (tl a.left) ([hd a.left] ++ a.right)
-move Stay a = Z a.left a.right
+move Forward (Z x [y:ys]) = Z [y:x] ys
+move Backward (Z [x:xs] y) = Z xs [x:y]
+move Stay b = b
 
-// Kijelolt elem kornyeke
 around :: Int (Zipper a) -> [a]
-around a b = (reverse (take a b.left)) ++ [hd b.right] ++ (take a (tl b.right))
-
-// Vegtelen zipper letrehozasa listabol
+around a (Z x [y:ys]) = reverse (taker a x) ++ [y] ++ (taker a ys)
+	where
+		taker a [] = []
+		taker 0 [x:xs] = []
+		taker a [x:xs] = [x:(taker (a - 1) xs)]
+		
 fromListInf :: a [a] -> Zipper a
-fromListInf a b = Z (repeat a) (b ++ (repeat a))
+fromListInf r x = Z (repeat r) (x ++ (repeat r))
 
-// Turing-gep tipusosztaly
 class Machine t where
   done :: (t a) -> Bool
   tape :: (t a) -> Zipper a
   step :: (t a) -> t a
 
-// Turing-gep adattipus
 :: State = InState Int | Accepted | Rejected
 
-derive gEq State
-
-GetInt :: State -> Int
-GetInt a
-  | a === Accepted = -9999999
-  | a === Rejected = -9999999
-  | otherwise = x
-  		where	
-  			x = hd [x1 \\ x1 <- [-999999..1000000] | a === (InState x1)]
-
-:: TuringMachine a = {
-	state :: State,
-	zipper :: Zipper a,
-	f :: Int a -> (State, a, Movement)
-	}
-TM :: State (Zipper a) (Int a -> (State, a, Movement)) -> TuringMachine a
-TM st zp fu = { state=st, zipper=zp, f=fu }
-
-// A Turing-gep mukodese
+:: TuringMachine a = TM State (Zipper a) (Int a -> (State, a, Movement))
 
 instance Machine TuringMachine where
-  done a
-  	| a.state === Accepted = True
-  	| a.state === Rejected = True
-  	| otherwise = False
-  tape a = a.zipper
-  step a = TM n_state (move n_move (write n_symbol a.zipper)) a.f
+  done (TM (InState _) _ _) = False
+  done (TM Accepted _ _) = True
+  done (TM Rejected _ _) = True
+  tape (TM _ b _) = b
+  step (TM (InState num) zipper fv) = (TM state (move mov (write val zipper)) fv)
   	where
-  		( n_state, n_symbol, n_move ) = a.f state (read zipper)
-  			where
-  				state = GetInt a.state  // fixme: ez így nem foolproof
-  				zipper = a.zipper
-
-// A Turing-gep futtatasa
+  		(state, val, mov) = fv num (read zipper)
+  	
 run :: (t a) -> [t a] | Machine t
 run a
   | done a == True = [a]
   | otherwise = [a] ++ run (step a) 
 
-// Turing-gep allapotainak megjelenitese
 showStates :: (t Char) -> [String] | Machine t
 showStates a
   | done a == True = [toString (around 5 (tape a))]
   |	otherwise = [toString (around 5 (tape a))] ++ showStates (step a)
 
-///////////////////////////////////////
-
-/*
+/////////////////
 
 test_fromList =
   [ fromList empty   === Z [] []
@@ -106,19 +70,19 @@ test_fromList =
   where
     empty :: [Int]
     empty = []
-    
+
 test_read =
   [ read (Z [] [1])      == 1
   , read (Z [] [2..])    == 2
   , read (Z [1..] [3..]) == 3
   ]
-  
+
 test_write =
   [ write 9 (Z [] [1])        === Z [] [9]
   , write 9 (Z [] [1..3])     === Z [] [9,2,3]
   , write 9 (Z [4..6] [1..3]) === Z [4..6] [9,2,3]
   ]
-  
+
 test_move =
   [ move Stay (Z empty [])            === Z [] []
   , move Stay (Z [1,2,3] [4,5,6])     === Z [1,2,3] [4,5,6]
@@ -128,18 +92,18 @@ test_move =
   where
     empty :: [Int]
     empty = []
-   
+
 test_around =
   [ around 0 (Z [] [1])      == [1]
   , around 3 (Z [1..] [0..]) == [3,2,1,0,1,2,3]
   ]
-  
-/*test_fromListInf =
+
+test_fromListInf =
   [ let (Z xs ys) = fromListInf 0 [1..5]
     in  take 100 xs == repeatn 100 0
         && take 100 ys == [1..5] ++ repeatn 95 0
-  ]*/
-  
+  ]
+
 test_done =
   [ not (done (TM (InState 0) undef undef))
   , done (TM Accepted undef undef)
@@ -165,7 +129,7 @@ test_step =
     f 0 'a' = (InState 0, 'b', Forward)
     f 0 'b' = (InState 0, 'a', Forward)
     f 1 _   = (Accepted,  'x', Stay)
-
+    
 test_run =
   [ let m = last (run (tm ['a','b','x','x']))
     in done m
@@ -184,7 +148,7 @@ test_run =
     f 0 'x' = (InState 1, 'x', Forward)
     f 1 'x' = (Accepted,  'x', Stay)
     f _ ch  = (Rejected,  '!', Stay)
-
+    
 test_showStates =
   [ showStates (tm ['a','b','x','x'])
     == [ "     abxx  "
@@ -216,7 +180,7 @@ tests =
   , test_write
   , test_move
   , test_around
-//  , test_fromListInf
+  , test_fromListInf
   , test_done
   , test_tape
   , test_step
@@ -225,6 +189,3 @@ tests =
   ]
 
 Start = (all and tests, zip2 [1..] (map and tests))
-*/
-
-Start = "N5XGDH"
