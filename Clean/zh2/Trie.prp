@@ -1,39 +1,19 @@
 Version: 1.4
 MainModule
-	Name:	Turing
+	Name:	Trie
 	Dir:	{Project}
 	DclOpen:	False
 	Icl
 		WindowPosition
-			X:	283
-			Y:	1
-			SizeX:	1278
-			SizeY:	528
-	IclOpen:	True
+			X:	537
+			Y:	20
+			SizeX:	1148
+			SizeY:	676
+	IclOpen:	False
 OtherModules
 	Module
-		Name:	StdArrayExtensions
-		Dir:	{Application}\Libraries\StdLib
-		DclOpen:	False
-		IclOpen:	False
-	Module
-		Name:	StdLib
-		Dir:	{Application}\Libraries\StdLib
-		DclOpen:	False
-		IclOpen:	False
-	Module
-		Name:	StdLibMisc
-		Dir:	{Application}\Libraries\StdLib
-		DclOpen:	False
-		IclOpen:	False
-	Module
-		Name:	StdListExtensions
-		Dir:	{Application}\Libraries\StdLib
-		DclOpen:	False
-		IclOpen:	False
-	Module
-		Name:	StdMaybe
-		Dir:	{Application}\Libraries\StdLib
+		Name:	GenEq
+		Dir:	{Application}\Libraries\Generics
 		DclOpen:	False
 		IclOpen:	False
 	Module
@@ -124,12 +104,6 @@ OtherModules
 	Module
 		Name:	StdTuple
 		Dir:	{Application}\Libraries\StdEnv
-		Dcl
-			WindowPosition
-				X:	10
-				Y:	10
-				SizeX:	800
-				SizeY:	640
 		DclOpen:	False
 		IclOpen:	False
 	Module
@@ -143,7 +117,27 @@ OtherModules
 		DclOpen:	False
 		IclOpen:	False
 	Module
-		Name:	GenEq
-		Dir:	{Application}\Libraries\Generics
+		Name:	StdArrayExtensions
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdLib
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdLibMisc
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdListExtensions
+		Dir:	{Application}\Libraries\StdLib
+		DclOpen:	False
+		IclOpen:	False
+	Module
+		Name:	StdMaybe
+		Dir:	{Application}\Libraries\StdLib
 		DclOpen:	False
 		IclOpen:	False

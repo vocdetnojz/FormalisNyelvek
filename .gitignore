@@ -1,5 +1,5 @@
-bead1/Clean System Files
+Clean/bead1/Clean System Files
 *.exe
-bead2/Clean System Files/Turing.o
-bead2/Clean System Files/Turing.abc
-bead2/Turing.prp
+Clean/bead2/Clean System Files/Turing.o
+Clean/bead2/Clean System Files/Turing.abc
+Clean/bead2/Turing.prp
