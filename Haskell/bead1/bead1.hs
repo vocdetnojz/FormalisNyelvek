@@ -5,23 +5,57 @@ import qualified Data.Text as T
 import qualified Data.Text.IO
 import Data.Char (toUpper)
 import Data.List.Split
+import Control.Monad.State.Lazy
+import Control.Monad
 
 
 -- A ---------------------------------------------
 
-enumerate :: String -> String
-enumerate x = concat [(show (i+1)) ++ "   " ++ (strings !! i) ++ "\n" | i <- [0,1..((length strings)-1)]]
-    where strings = splitOn "\n" x
+--newId :: State Int Int
+--newId = state $ \s -> (s+1, s+1)
+--
+--numberLine :: String -> State Int String
+--numberLine s = do
+--    i <- newId
+--    pure $ show i ++ ". " ++ s
+--
+--callNumberLine :: [String] -> [String]
+--callNumberLine xs = fst (runState (mapM numberLine xs) 0)
+--
+--splitModJoin :: ([String] -> [String]) -> String -> String
+--splitModJoin f s = join (map lnend (f (splitOn "\n" s)))
+--    where lnend x = x ++ "\n"
+--
+--modSources1 :: Block -> Block
+--modSources1 (CodeBlock attr xs) = CodeBlock attr (splitModJoin callNumberLine xs)
+--modSources1 x = x
+--
+--enumSources :: Pandoc -> Pandoc
+--enumSources = walk modSources1
+
+-- B ---------------------------------------------
+
+newId :: State Int Int
+newId = state $ \s -> (s+1, s+1)
+
+numberLine :: String -> State Int String
+numberLine s = do
+    i <- newId
+    pure $ show i ++ ". " ++ s
+
+callNumberLine :: [String] -> [String]
+callNumberLine xs = fst (runState (mapM numberLine xs) 0)
+
+splitModJoin :: ([String] -> [String]) -> String -> String
+splitModJoin f s = join (map lnend (f (splitOn "\n" s)))
+    where lnend x = x ++ "\n"
 
 modSources1 :: Block -> Block
-modSources1 (CodeBlock attr xs) = CodeBlock attr (enumerate xs)
+modSources1 (CodeBlock attr xs) = CodeBlock attr (splitModJoin callNumberLine xs)
 modSources1 x = x
 
 enumSources :: Pandoc -> Pandoc
 enumSources = walk modSources1
-
--- B ---------------------------------------------
-
 
 
 --------------------------------------------------
