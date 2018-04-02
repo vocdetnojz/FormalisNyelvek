@@ -8,6 +8,7 @@ szöveg
     f :: a -> a
     f x = x
     f _ = _
+    
 
 még egy kis szöveg
 
