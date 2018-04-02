@@ -8,17 +8,17 @@ import Data.List.Split
 import Control.Monad.State.Lazy
 
 
---newId :: State Int Int
---newId = state $ \s -> (s+1, s+1)
---
---numberLine :: String -> State Int String
---numberLine s = do
---    i <- newId
---    pure $ show i ++ ". " ++ s
---
---callNumberLine :: [String] -> [String]
---callNumberLine xs = fst (runState (mapM numberLine xs) 0)
---
+newId :: State Int Int
+newId = state $ \s -> (s+1, s+1)
+
+numberLine :: String -> State Int String
+numberLine s = do
+    i <- newId
+    pure $ show i ++ ". " ++ s
+
+callNumberLine :: [String] -> [String]
+callNumberLine xs = fst (runState (mapM numberLine xs) 0)
+
 --callMultiple xs = [show (callNumberLine (xs !! i)) | i <- [0,1..((length xs)-1)]]
 
 --
@@ -50,24 +50,29 @@ import Control.Monad.State.Lazy
 ----    putStrLn $ splitModJoin callNumberLine "cskdjcnsdjcnsjd\naiusbbnoansiva\nausnaus"
 --    putStrLn $ splitModJoin callNumberLine "cskdjcnsdjcnsjd\naiusbbnoansiva\nausnaus"
 
+--
+--type GameValue = Int
+--type GameState = (Bool, Int)
+--
+--playGame :: String -> State GameState GameValue
+--playGame []     = do
+--    (_, score) <- get
+--    return score
+--
+--playGame (x:xs) = do
+--    (on, score) <- get
+--    case x of
+--         'a' | on -> put (on, score + 1)
+--         'b' | on -> put (on, score - 1)
+--         'c'      -> put (not on, score)
+--         _        -> put (on, score)
+--    playGame xs
+--
+--startState = (False, 0)
+--
+--main = print $ evalState (playGame "abcaaacbbcabbab") startState
 
-type GameValue = Int
-type GameState = (Bool, Int)
 
-playGame :: String -> State GameState GameValue
-playGame []     = do
-    (_, score) <- get
-    return score
 
-playGame (x:xs) = do
-    (on, score) <- get
-    case x of
-         'a' | on -> put (on, score + 1)
-         'b' | on -> put (on, score - 1)
-         'c'      -> put (not on, score)
-         _        -> put (on, score)
-    playGame xs
-
-startState = (False, 0)
-
-main = print $ evalState (playGame "abcaaacbbcabbab") startState
+f :: [String] -> ([String], Int)
+f x = (x, 2)

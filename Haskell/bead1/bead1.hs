@@ -46,20 +46,25 @@ numberLine s = do
 callNumberLine :: [String] -> [String]
 callNumberLine xs = fst (runState (mapM numberLine xs) 0)
 
-splitModJoin :: ([String] -> [String]) -> String -> String
-splitModJoin f s = join (map lnend (f (splitOn "\n" s)))
+splitModJoin :: String -> String
+splitModJoin s = join (map lnend (callNumberLine (splitOn "\n" s)))
     where lnend x = x ++ "\n"
 
 modSources1 :: Block -> Block
-modSources1 (CodeBlock attr xs) = CodeBlock attr (splitModJoin callNumberLine xs)
+modSources1 (CodeBlock attr xs) = CodeBlock attr (splitModJoin xs)
 modSources1 x = x
 
+--enumSources :: Pandoc -> Pandoc
+--enumSources = walk modSources1
+
 enumSources :: Pandoc -> Pandoc
-enumSources = do
-    walk modSources1
-
-
-
+enumSources p = evalState (walkM f p) 0
+    where
+        f :: Block -> State Int Block
+        f (CodeBlock attr xs) = do
+            i <- state $ \i -> (i+1, i+1)
+            pure $ CodeBlock attr "fos"
+        f x = pure x
 
 --------------------------------------------------
 
