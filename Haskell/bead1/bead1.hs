@@ -35,20 +35,42 @@ import Control.Monad
 
 -- B ---------------------------------------------
 
+--newId :: State Int Int
+--newId = state $ \s -> (s, s+1)
+--
+--numberLine :: String -> State Int String
+--numberLine s = do
+--    i <- newId
+--    pure $ show i ++ "   " ++ s ++ "\n"
+--
+--callNumberLine :: [String] -> Int -> [String]
+--callNumberLine xs a = fst $ runState (mapM numberLine xs) a
+--
+--splitModJoin :: String -> Int -> String
+--splitModJoin s a = join $ callNumberLine (splitOn "\n" s) a
+--
+--evalOnBlock :: Block -> State Int Block
+--evalOnBlock (CodeBlock attr xs) = do
+--    i <- newId
+--    pure $ CodeBlock attr (splitModJoin xs i)
+--evalOnBlock x = pure x
+--
+--enumSources :: Pandoc -> Pandoc
+--enumSources p = evalState (walkM evalOnBlock p) 1
+
 newId :: State Int Int
 newId = state $ \s -> (s, s+1)
 
 numberLine :: String -> State Int String
 numberLine s = do
     i <- newId
-    pure $ show i ++ "   " ++ s
+    pure $ show i ++ "   " ++ s ++ "\n"
 
 callNumberLine :: [String] -> Int -> [String]
 callNumberLine xs a = fst $ runState (mapM numberLine xs) a
 
 splitModJoin :: String -> Int -> String
-splitModJoin s a = join $ map lnend (callNumberLine (splitOn "\n" s) a)
-    where lnend x = x ++ "\n"
+splitModJoin s a = join $ callNumberLine (splitOn "\n" s) a
 
 evalOnBlock :: Block -> State Int Block
 evalOnBlock (CodeBlock attr xs) = do
