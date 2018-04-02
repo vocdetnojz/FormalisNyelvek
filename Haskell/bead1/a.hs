@@ -95,3 +95,7 @@ incNum = increment 5
 dbl1To10 = map (\x -> x * 2) [1..10]
 
 -- conditionals 
+
+
+-- monads
+

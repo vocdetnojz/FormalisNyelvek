@@ -17,7 +17,7 @@ import Control.Monad
 --numberLine :: String -> State Int String
 --numberLine s = do
 --    i <- newId
---    pure $ show i ++ ". " ++ s
+--    pure $ show i ++ "   " ++ s
 --
 --callNumberLine :: [String] -> [String]
 --callNumberLine xs = fst (runState (mapM numberLine xs) 0)
@@ -41,7 +41,7 @@ newId = state $ \s -> (s+1, s+1)
 numberLine :: String -> State Int String
 numberLine s = do
     i <- newId
-    pure $ show i ++ ". " ++ s
+    pure $ show i ++ "   " ++ s
 
 callNumberLine :: [String] -> [String]
 callNumberLine xs = fst (runState (mapM numberLine xs) 0)
@@ -55,7 +55,10 @@ modSources1 (CodeBlock attr xs) = CodeBlock attr (splitModJoin callNumberLine xs
 modSources1 x = x
 
 enumSources :: Pandoc -> Pandoc
-enumSources = walk modSources1
+enumSources = do
+    walk modSources1
+
+
 
 
 --------------------------------------------------
@@ -70,4 +73,3 @@ main = do
     s <- runIOorExplode $ writeMarkdown (def { writerSetextHeaders = False }) $ enumSources p
 --    Data.Text.IO.writeFile (name ++ "_converted.md") s
     Data.Text.IO.writeFile "example2.md" s
-
