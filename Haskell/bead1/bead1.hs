@@ -36,34 +36,27 @@ import Control.Monad
 -- B ---------------------------------------------
 
 newId :: State Int Int
-newId = state $ \s -> (s+1, s+1)
+newId = state $ \s -> (s, s+1)
 
 numberLine :: String -> State Int String
 numberLine s = do
     i <- newId
     pure $ show i ++ "   " ++ s
 
-callNumberLine :: [String] -> [String]
-callNumberLine xs = fst (runState (mapM numberLine xs) 0)
+callNumberLine :: [String] -> Int -> [String]
+callNumberLine xs a = fst (runState (mapM numberLine xs) a)
 
-splitModJoin :: String -> String
-splitModJoin s = join (map lnend (callNumberLine (splitOn "\n" s)))
+splitModJoin :: String -> Int -> String
+splitModJoin s a = join (map lnend (callNumberLine (splitOn "\n" s) a))
     where lnend x = x ++ "\n"
 
-modSources1 :: Block -> Block
-modSources1 (CodeBlock attr xs) = CodeBlock attr (splitModJoin xs)
-modSources1 x = x
-
---enumSources :: Pandoc -> Pandoc
---enumSources = walk modSources1
-
 enumSources :: Pandoc -> Pandoc
-enumSources p = evalState (walkM f p) 0
+enumSources p = evalState (walkM f p) 1
     where
         f :: Block -> State Int Block
         f (CodeBlock attr xs) = do
-            i <- state $ \i -> (i+1, i+1)
-            pure $ CodeBlock attr "fos"
+            i <- newId
+            pure $ CodeBlock attr (splitModJoin xs i)
         f x = pure x
 
 --------------------------------------------------
