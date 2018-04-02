@@ -44,20 +44,20 @@ numberLine s = do
     pure $ show i ++ "   " ++ s
 
 callNumberLine :: [String] -> Int -> [String]
-callNumberLine xs a = fst (runState (mapM numberLine xs) a)
+callNumberLine xs a = fst $ runState (mapM numberLine xs) a
 
 splitModJoin :: String -> Int -> String
-splitModJoin s a = join (map lnend (callNumberLine (splitOn "\n" s) a))
+splitModJoin s a = join $ map lnend (callNumberLine (splitOn "\n" s) a)
     where lnend x = x ++ "\n"
 
+evalOnBlock :: Block -> State Int Block
+evalOnBlock (CodeBlock attr xs) = do
+    i <- newId
+    pure $ CodeBlock attr (splitModJoin xs i)
+evalOnBlock x = pure x
+
 enumSources :: Pandoc -> Pandoc
-enumSources p = evalState (walkM f p) 1
-    where
-        f :: Block -> State Int Block
-        f (CodeBlock attr xs) = do
-            i <- newId
-            pure $ CodeBlock attr (splitModJoin xs i)
-        f x = pure x
+enumSources p = evalState (walkM evalOnBlock p) 1
 
 --------------------------------------------------
 
@@ -69,5 +69,7 @@ main = do
     s <- Data.Text.IO.readFile "example.md"
     p <- runIOorExplode $ readMarkdown def s
     s <- runIOorExplode $ writeMarkdown (def { writerSetextHeaders = False }) $ enumSources p
+--    codeLineCount <- newId
+--    putStrLn $ show
 --    Data.Text.IO.writeFile (name ++ "_converted.md") s
     Data.Text.IO.writeFile "example2.md" s
