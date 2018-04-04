@@ -16,19 +16,10 @@ newId = state $ \s -> (s, s-1)
 counter :: State Int Int
 counter = state $ \s -> (0, s+1)
 
---numberLine :: String -> State Int String
---numberLine s = do
---    i <- newId
---    pure $ "#" ++ show i
-
---walkLines :: Inline -> State Int Inline
---walkLines (Code attr s) = Code attr (numberLine s)
---walkLines x = x
-
-walkLines :: Inline -> State Int Inline
-walkLines (Code attr s) = do
+walkLines :: Block -> State Int Block
+walkLines (CodeBlock attr s) = do
     i <- newId
-    pure $ Code attr ("#" ++ (show i))
+    pure $ CodeBlock attr ("#" ++ (show i))
 walkLines x = do
     pure $ x
 
