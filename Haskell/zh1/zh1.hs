@@ -10,6 +10,8 @@ import Control.Monad
 
 -------------------------
 
+-- nem sorokat számoz, hanem blokkokat
+
 newId :: State Int Int
 newId = state $ \s -> (s, s-1)
 
