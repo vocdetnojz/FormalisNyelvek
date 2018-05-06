@@ -1,1 +1,1 @@
-pandoc --filter bead2.hs example.md -t markdown > pandoc.log
+pandoc --meta liftheader:3 -F bead2B.hs example.md -t markdown
