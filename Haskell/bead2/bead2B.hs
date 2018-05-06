@@ -1,4 +1,5 @@
 import Data.Char
+import Data.Maybe
 import Text.Pandoc
 import Text.Pandoc.Definition
 import Text.Pandoc.Walk
@@ -10,7 +11,7 @@ getIntFromMetaValue (MetaString s) = read s::Int
 getIntFromMetaValue _ = 0
 
 getIntFromMeta :: String -> Meta -> Int
-getIntFromMeta s m = getIntFromMetaValue (fromMeta (MetaBool True) (lookupMeta s m))
+getIntFromMeta s m = getIntFromMetaValue (fromMaybe (MetaBool True) (lookupMeta s m))
 
 
 behead :: Block -> Int -> Block
